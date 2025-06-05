@@ -1,123 +1,9 @@
-<!doctype html>
-<html class="no-js" lang="en">
-    <head>
-        <title>Contact Us - NS SYSTEMES IT SOLUTIONS</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="author" content="NS SYSTEMES IT SOLUTIONS">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-        <meta name="description" content="Get in touch with NS SYSTEMES IT SOLUTIONS. We're here to help with your IT needs.">
-
-        <link rel="shortcut icon" href="img/main-log.svg">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-        <link rel="stylesheet" href="css/style.css">
-        <!-- Add specific styles for contact page if necessary -->
-        <style>
-            /* .contact-page-hero styles would be removed or not used if hero is gone */
-
-            .contact-content-area {
-                padding: 4rem 0;
-                /* Add padding-top to account for fixed navbar if this is the first visible element */
-                /* This value should roughly match your navbar's height */
-            }
-            .contact-content-area.page-content-after-fixed-header {
-                 padding-top: calc(var(--navbar-height-scrolled) + 4rem); /* Navbar height + desired top padding */
-            }
-
-            .contact-content-area .container {
-                max-width: 900px;
-            }
-            .contact-form-section, .contact-details-section {
-                margin-bottom: 3rem;
-            }
-            .contact-form-section h2, .contact-details-section h2 {
-                font-size: 2rem;
-                color: var(--primary-color);
-                margin-bottom: 1.5rem;
-                padding-bottom: 0.75rem;
-                border-bottom: 2px solid var(--light-accent-color);
-            }
-            .form-group {
-                margin-bottom: 1.5rem;
-            }
-            .form-group label {
-                display: block;
-                margin-bottom: 0.5rem;
-                font-weight: 500;
-                color: var(--text-dark);
-            }
-            .form-group input[type="text"],
-            .form-group input[type="email"],
-            .form-group input[type="tel"],
-            .form-group textarea {
-                width: 100%;
-                padding: 0.75rem 1rem;
-                border: 1px solid #ced4da;
-                border-radius: var(--border-radius-sm);
-                font-size: 1rem;
-                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-            }
-            .form-group input[type="text"]:focus,
-            .form-group input[type="email"]:focus,
-            .form-group input[type="tel"]:focus,
-            .form-group textarea:focus {
-                border-color: var(--primary-color);
-                outline: 0;
-                box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-            }
-            .form-group textarea {
-                min-height: 120px;
-                resize: vertical;
-            }
-            .contact-details-section p {
-                font-size: 1.05rem;
-                line-height: 1.8;
-                margin-bottom: 1rem;
-                color: var(--text-muted);
-            }
-            .contact-details-section p i {
-                margin-right: 0.75rem;
-                color: var(--primary-color);
-                width: 20px; /* Align icons */
-                text-align: center;
-            }
-            .map-container { /* For an embedded map */
-                margin-top: 2rem;
-                height: 350px; /* Adjust as needed */
-                background: var(--light-accent-color); /* Placeholder color */
-                border-radius: var(--border-radius-md);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--text-muted);
-            }
-        </style>
-    </head>
-    <body>
-        <div class="scroll-progress"></div>
-
-        <div id="page-container">
-            <!-- Header Module -->
-            <div data-include="modules/header.html"></div>
-
-            <!-- Contact Page Specific Hero REMOVED -->
-            <!--
-            <header class="contact-page-hero page-content-after-fixed-header">
-                <div class="container">
-                    <h1>Contact Us</h1>
-                    <p class="section-description" style="color: var(--text-light-secondary);">We'd love to hear from you! Reach out with any questions or to discuss your next project.</p>
-                </div>
-            </header>
-            -->
-
-            <!-- Main Content for Contact Us Page -->
-            <!-- Added .page-content-after-fixed-header here if the hero is removed -->
+ <!-- Main Content for Contact Us Page -->
             <main class="contact-content-area page-content-after-fixed-header">
                 <div class="container">
                     <div class="row" style="display: flex; flex-wrap: wrap; gap: 2rem;">
                         <div class="contact-form-section" style="flex: 2; min-width: 300px;">
-                            <h2>Send Us a Message</h2> <!-- This h2 remains -->
+                            <!-- REMOVED THIS H2: <h2>Send Us a Message</h2> -->
                             <form id="contactForm" action="YOUR_FORM_HANDLER_URL" method="POST">
                                 <div class="form-group">
                                     <label for="name">Full Name</label>
@@ -144,31 +30,17 @@
                         </div>
 
                         <div class="contact-details-section" style="flex: 1; min-width: 280px;">
-                            <h2>Our Contact Details</h2> <!-- This h2 remains -->
+                            <h2>Our Contact Details</h2>
                             <p><i class="fas fa-map-marker-alt"></i> Hyderabad, INDIA</p>
                             <p><i class="fas fa-phone-alt"></i> <a href="tel:+918977540698">+91 89775 40698</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:info@nsystemes.com">info@nsystemes.com</a></p> <!-- Update email -->
-                            <p><i class="fas fa-globe"></i> <a href="https://www.nsystemes.com" target="_blank">www.nsystemes.com</a></p> <!-- Update website -->
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:info@nsystemes.com">info@nsystemes.com</a></p>
+                            <p><i class="fas fa-globe"></i> <a href="https://www.nsystemes.com" target="_blank">www.nsystemes.com</a></p>
 
                             <h2>Office Hours</h2>
                             <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                             <p>Saturday: 10:00 AM - 2:00 PM</p>
                             <p>Sunday: Closed</p>
-
-                            <!-- Optional: Map Placeholder -->
-                            <!-- <div class="map-container">
-                                <p>Map will be embedded here.</p>
-                                <iframe src="YOUR_GOOGLE_MAPS_EMBED_URL" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                            </div> -->
                         </div>
                     </div>
                 </div>
             </main>
-
-            <!-- Footer Module -->
-            <div data-include="modules/footer.html"></div>
-        </div>
-
-        <script src="js/script.js"></script>
-   </body>
-</html>
