@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+/* ==========================================================================
+   Variables & Global Setup
+   ========================================================================== */
 :root {
     --primary-color: #007bff;
     --primary-gradient: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
@@ -29,12 +32,10 @@
     --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
 
-    /* --- Navbar Height Variables (Updated from your screenshots) --- */
+    /* --- Navbar Height Variables --- */
     --navbar-height-initial: 81.6px;
     --navbar-height-scrolled: 65.6px;
-    /* For mobile, measure the scrolled navbar height if it's different.
-       If it's the same as desktop scrolled, this is fine. */
-    --navbar-height-scrolled-mobile: 65.6px; /* Assuming mobile scrolled height is similar for now */
+    --navbar-height-scrolled-mobile: 65.6px; /* Adjust if mobile scrolled height is different */
 }
 
 body {
@@ -58,7 +59,7 @@ html { scroll-behavior: smooth; }
     padding: 0 2rem;
 }
 
-.section {
+.section { /* General styling for all <section> elements used as modules */
     padding: 5rem 0;
     overflow: hidden;
 }
@@ -66,7 +67,7 @@ html { scroll-behavior: smooth; }
 .section.bg-dark { background-color: var(--bg-dark); color: var(--text-light); }
 .section.bg-dark-textured { background-color: var(--bg-dark-textured); color: var(--text-light); }
 
-.section-title {
+.section-title { /* Used in most sections */
     text-align: center;
     font-size: clamp(2.2rem, 5vw, 3rem);
     font-weight: 700;
@@ -93,7 +94,7 @@ html { scroll-behavior: smooth; }
 .section.bg-dark-textured .section-title::after {
     background-color: var(--text-light);
 }
-.section-subtitle {
+.section-subtitle { /* Used in some sections like Testimonials, Core Solutions */
     text-align: center;
     font-size: 1rem;
     font-weight: 600;
@@ -102,7 +103,7 @@ html { scroll-behavior: smooth; }
     letter-spacing: 1px;
     margin-bottom: 0.5rem;
 }
-.section-description {
+.section-description { /* Used in several sections */
     font-size: 1.1rem;
     color: var(--text-muted);
     text-align: center;
@@ -116,26 +117,50 @@ html { scroll-behavior: smooth; }
     color: var(--text-light-secondary);
 }
 
-/* --- Navbar --- */
+.cta-button { /* General Call to Action button style */
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: var(--shadow-sm);
+}
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-md);
+    background-color: #0056b3;
+}
+
+/* --- General Page Adjustments for Fixed Header (used on sub-pages) --- */
+.page-content-after-fixed-header {
+    padding-top: var(--navbar-height-initial); /* Use initial height for subpages if navbar starts transparent */
+}
+
+/* ==========================================================================
+   Header (Navbar) Module - (modules/header.html)
+   ========================================================================== */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 0; /* This defines initial padding */
+    padding: 1.5rem 0;
     background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     z-index: 1000;
     transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
-
 .navbar.scrolled {
-    padding: 1rem 0; /* This defines scrolled padding */
+    padding: 1rem 0;
     background: rgba(255, 255, 255, 0.98);
     box-shadow: var(--shadow-md);
     border-bottom-color: transparent;
 }
-
 .nav-container {
     max-width: 1300px;
     margin: 0 auto;
@@ -144,7 +169,6 @@ html { scroll-behavior: smooth; }
     justify-content: space-between;
     align-items: center;
 }
-
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
@@ -156,13 +180,11 @@ html { scroll-behavior: smooth; }
 .navbar.scrolled .logo {
     color: var(--primary-color);
 }
-
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 2.5rem;
 }
-
 .nav-menu .nav-link {
     text-decoration: none;
     color: var(--text-light);
@@ -174,7 +196,6 @@ html { scroll-behavior: smooth; }
 .navbar.scrolled .nav-menu .nav-link {
     color: var(--text-dark);
 }
-
 .nav-menu .nav-link::after {
     content: '';
     position: absolute;
@@ -188,7 +209,6 @@ html { scroll-behavior: smooth; }
 .navbar:not(.scrolled) .nav-menu .nav-link::after {
     background: var(--text-light);
 }
-
 .nav-menu .nav-link:hover {
     color: var(--primary-color);
 }
@@ -198,7 +218,6 @@ html { scroll-behavior: smooth; }
 .nav-menu .nav-link:hover::after {
     width: 100%;
 }
-
 .hamburger {
     display: none;
     flex-direction: column;
@@ -216,7 +235,9 @@ html { scroll-behavior: smooth; }
     background: var(--text-dark);
 }
 
-/* --- Hero Section (Homepage) --- */
+/* ==========================================================================
+   Hero Section Module - (modules/hero.html)
+   ========================================================================== */
 .hero {
     min-height: 100vh;
     background-image: url('../img/banner4.jpg');
@@ -229,14 +250,13 @@ html { scroll-behavior: smooth; }
     text-align: center;
     position: relative;
     color: var(--text-light);
-    padding-top: var(--navbar-height-initial); /* Uses initial taller height */
+    padding-top: var(--navbar-height-initial);
     padding-bottom: 4rem;
     padding-left: 2rem;
     padding-right: 2rem;
     overflow: hidden;
     animation: heroBackgroundAnimation 40s linear infinite alternate;
 }
-
 .hero::before {
     content: '';
     position: absolute;
@@ -247,14 +267,12 @@ html { scroll-behavior: smooth; }
     background: rgba(20, 30, 40, 0.65);
     z-index: 1;
 }
-
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
     z-index: 2;
     position: relative;
 }
-
 .hero h1 {
     font-size: clamp(2.8rem, 6vw, 4rem);
     font-weight: 700;
@@ -265,7 +283,6 @@ html { scroll-behavior: smooth; }
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     color: var(--text-light);
 }
-
 .hero p {
     font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     margin-bottom: 2.5rem;
@@ -277,34 +294,16 @@ html { scroll-behavior: smooth; }
     line-height: 1.8;
     color: var(--text-light-secondary);
 }
-
-.cta-button {
-    display: inline-block;
-    padding: 0.9rem 2.2rem;
-    background: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--border-radius-sm);
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    border: none;
-    box-shadow: var(--shadow-sm);
-}
-.hero-cta {
+.hero-cta { /* Extends .cta-button */
     opacity: 0;
     animation: fadeInUp 1s ease 0.9s forwards;
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
 }
-.hero-cta:hover, .cta-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: var(--shadow-md);
-}
 
-/* ... (Other sections: Comprehensive IT Services, Who We Are, Solutions Offered, Industries, CTA, Footer, Animations, Scroll Progress) ... */
-/* --- Comprehensive IT Services (Core Solutions) --- */
+/* ==========================================================================
+   Core Solutions Module (Comprehensive IT Services) - (modules/core-solutions.html)
+   ========================================================================== */
 .comprehensive-services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -350,8 +349,10 @@ html { scroll-behavior: smooth; }
     line-height: 1.6;
 }
 
-/* --- Who We Are Section --- */
-.who-we-are .content-section {
+/* ==========================================================================
+   Who We Are Module - (modules/who-we-are.html)
+   ========================================================================== */
+.who-we-are .content-section { /* .who-we-are is the section class from the module */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -381,8 +382,10 @@ html { scroll-behavior: smooth; }
     margin: 0 auto;
 }
 
-/* --- Solutions Offered Section --- */
-.solutions-offered .solutions-grid {
+/* ==========================================================================
+   Solutions Offered Module - (modules/solutions-offered.html)
+   ========================================================================== */
+.solutions-offered .solutions-grid { /* .solutions-offered is the section class */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
@@ -397,7 +400,7 @@ html { scroll-behavior: smooth; }
     display: flex;
     flex-direction: column;
 }
-.section.bg-dark-textured .solution-card {
+.section.bg-dark-textured .solution-card { /* Contextual styling */
     background: #2c3643;
     color: var(--text-light-secondary);
 }
@@ -452,8 +455,10 @@ html { scroll-behavior: smooth; }
     color: var(--text-light);
 }
 
-/* --- Our Industries Section --- */
-.industries-grid {
+/* ==========================================================================
+   Our Industries Module - (modules/our-industries.html)
+   ========================================================================== */
+.industries .industries-grid { /* .industries is the section class */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.5rem;
@@ -493,8 +498,10 @@ html { scroll-behavior: smooth; }
     display: block;
 }
 
-/* --- CTA Section --- */
-.cta-section {
+/* ==========================================================================
+   CTA (Call to Action) Module - (modules/cta.html)
+   ========================================================================== */
+.cta-section { /* This is the <section class="cta-section section"> */
     padding: 5rem 0;
     background: var(--primary-gradient);
     color: var(--text-light);
@@ -504,6 +511,7 @@ html { scroll-behavior: smooth; }
     font-size: clamp(2.2rem, 5vw, 2.8rem);
     margin-bottom: 1.5rem;
     font-weight: 700;
+    /* Color is inherited from .cta-section */
 }
 .cta-section p {
     font-size: 1.15rem;
@@ -513,18 +521,21 @@ html { scroll-behavior: smooth; }
     margin-right: auto;
     opacity: 0.9;
 }
-.cta-section .cta-button {
+.cta-section .cta-button { /* Specific CTA button styling if needed, or uses general .cta-button */
     background: var(--text-light);
     color: var(--primary-color);
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
 }
 .cta-section .cta-button:hover {
-    background: #e9ecef;
+    background: #e9ecef; /* Slightly different hover for this button */
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    /* transform and color inherited or overridden if needed */
 }
 
-/* --- Footer --- */
+/* ==========================================================================
+   Footer Module - (modules/footer.html)
+   ========================================================================== */
 .footer {
     background: var(--text-dark);
     color: #bdc3c7;
@@ -605,7 +616,9 @@ html { scroll-behavior: smooth; }
 }
 .footer-bottom a:hover { color: var(--text-light); }
 
-/* --- Animations --- */
+/* ==========================================================================
+   Animations & Scroll Progress
+   ========================================================================== */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
@@ -619,7 +632,6 @@ html { scroll-behavior: smooth; }
     opacity: 1;
     transform: translateY(0);
 }
-
 @keyframes heroBackgroundAnimation {
     0% { background-size: 110% auto; background-position: 50% 50%; }
     25% { background-position: 55% 45%; }
@@ -627,8 +639,6 @@ html { scroll-behavior: smooth; }
     75% { background-position: 50% 40%; }
     100% { background-size: 110% auto; background-position: 50% 50%; }
 }
-
-/* --- Scroll Progress Bar --- */
 .scroll-progress {
     position: fixed;
     top: 0;
@@ -640,21 +650,13 @@ html { scroll-behavior: smooth; }
     transition: width 0.05s ease-out;
 }
 
-/* --- General Page Adjustments for Fixed Header --- */
-.page-content-after-fixed-header {
-    /*
-      If the navbar can be transparent with its larger 'initial' padding at the top of any subpage,
-      then we must use the initial height to prevent overlap.
-    */
-    padding-top: var(--navbar-height-initial); /* UPDATED: Use initial height */
-}
-
-
-/* === About Page Specific Styles === */
-.about-page-hero {
+/* ==========================================================================
+   About Page Specific Styles - (about-us.html, modules/about-us-content.html)
+   ========================================================================== */
+.about-page-hero { /* Used in about-us.html */
     background: var(--primary-gradient);
     color: var(--text-light);
-    padding-bottom: 4rem; /* Content padding, top is handled by .page-content-after-fixed-header */
+    padding-bottom: 4rem;
     padding-left: 2rem;
     padding-right: 2rem;
     text-align: center;
@@ -670,14 +672,14 @@ html { scroll-behavior: smooth; }
     margin-left: auto;
     margin-right: auto;
 }
-.about-page-content {
+.about-page-content { /* Wrapper for content in about-us-content.html, used in about-us.html */
     padding-top: 4rem;
     padding-bottom: 4rem;
 }
 .about-page-content .container {
     max-width: 900px;
 }
-.about-section {
+.about-section { /* Individual content sections within about-us-content.html */
     margin-bottom: 3rem;
 }
 .about-section h2 {
@@ -743,17 +745,19 @@ html { scroll-behavior: smooth; }
     color: var(--secondary-color);
 }
 
-/* === Contact Page Specific Styles === */
-.contact-content-area {
+/* ==========================================================================
+   Contact Page Specific Styles - (contact.html)
+   ========================================================================== */
+.contact-content-area { /* Main wrapper for contact page content */
     padding-top: 4rem;
     padding-bottom: 4rem;
 }
 .contact-content-area .container {
-    max-width: 700px;
+    max-width: 700px; /* Centered single column */
     margin-left: auto;
     margin-right: auto;
 }
-.contact-details-section h2 {
+.contact-details-section h2 { /* "Our Contact Details" title */
     font-size: 2.2rem;
     color: var(--primary-color);
     margin-bottom: 2rem;
@@ -762,7 +766,7 @@ html { scroll-behavior: smooth; }
     text-align: center;
     font-weight: 600;
 }
-.contact-details-section h3 {
+.contact-details-section h3 { /* "Office Hours" title */
     font-size: 1.5rem;
     color: var(--text-dark);
     margin-top: 2.5rem;
@@ -804,26 +808,124 @@ html { scroll-behavior: smooth; }
     border: 1px solid #ddd;
 }
 
-/* --- Responsive Design --- */
+/* ==========================================================================
+   Service Page Template Styles - (e.g., cloud-services.html, etc.)
+   ========================================================================== */
+.service-page-hero { /* Hero for individual service pages */
+    background: var(--primary-gradient); /* Default, can be overridden */
+    color: var(--text-light);
+    padding-bottom: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: center;
+}
+.service-page-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+.service-page-hero .section-description {
+    color: var(--text-light-secondary);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.service-page-content { /* Main content wrapper for service pages */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+.service-page-content .container {
+    max-width: 900px;
+}
+.service-section { /* Sections within a service page */
+    margin-bottom: 3rem;
+}
+.service-section h2 { /* Sub-section titles like "Our Cloud Service Offerings" */
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-accent-color);
+    font-weight: 600;
+}
+.service-section h3 { /* Smaller headings within a service section */
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+.service-section p,
+.service-section ul {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+.service-section ul {
+    list-style-type: disc;
+    list-style-position: outside;
+    padding-left: 20px;
+}
+.service-section ul li {
+    margin-bottom: 0.5rem;
+}
+.service-key-features { /* Box for highlighting key features/offerings */
+    background-color: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: var(--border-radius-md);
+    margin-top: 2rem;
+    border: 1px solid var(--light-accent-color);
+}
+.service-key-features ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+.service-key-features ul li {
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+.service-key-features ul li::before {
+    content: '\f00c'; /* FontAwesome check icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900; /* Required for solid icons in FA6 Free */
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 2px; /* Adjust for vertical alignment */
+    font-size: 1.1rem;
+}
+.service-cta-section { /* CTA block at the end of service pages */
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background-color: var(--light-accent-color);
+    border-radius: var(--border-radius-md);
+}
+.service-cta-section h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+.service-cta-section p {
+    margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
 @media (max-width: 992px) {
+    /* .nav-cta-button was removed, this rule is not strictly needed but harmless */
     /* .nav-cta-button { display: none; } */
 }
 
 @media (max-width: 768px) {
     .navbar { padding: 0.75rem 0; }
     .navbar.scrolled { padding: 0.75rem 0; }
-    /* Mobile navbar height will be different due to less padding.
-       Need to measure and set --navbar-height-initial-mobile if transparency is kept,
-       or use --navbar-height-scrolled-mobile if it becomes solid quickly.
-       Based on current navbar CSS, its padding is 0.75rem top/bottom.
-       So, 0.75rem * 16px * 2 = 24px. Plus content, maybe ~50-60px total.
-    */
-    :root {
-      /* Re-declare for mobile if navbar behavior/height is distinctly different */
-      /* If mobile navbar always appears "scrolled" or its initial transparent height is same as scrolled: */
-      --navbar-height-initial-mobile: var(--navbar-height-scrolled-mobile); /* Or a specific measured value */
-    }
-
     .logo { font-size: 1.2rem; }
 
     .nav-menu {
@@ -863,7 +965,7 @@ html { scroll-behavior: smooth; }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .hero { padding-top: var(--navbar-height-scrolled-mobile); } /* Use scrolled height for mobile hero */
+    .hero { padding-top: var(--navbar-height-scrolled-mobile); }
     .hero h1 { font-size: 2.2rem; }
     .hero p { font-size: 1rem; }
     .section-title { font-size: 2rem; }
@@ -900,28 +1002,28 @@ html { scroll-behavior: smooth; }
     .social-links { justify-content: center; }
 
     .page-content-after-fixed-header {
-        /*
-          If the mobile navbar always appears solid or quickly becomes solid,
-          using its scrolled height is correct.
-        */
+        /* If mobile navbar always appears solid or quickly becomes solid, use its scrolled height */
         padding-top: var(--navbar-height-scrolled-mobile);
     }
 
-    .about-page-hero h1 {
+    /* Page Specific Responsive Adjustments */
+    .about-page-hero h1, .service-page-hero h1 {
         font-size: clamp(2rem, 6vw, 2.8rem);
     }
     .about-page-content .container,
-    .contact-content-area .container {
+    .contact-content-area .container,
+    .service-page-content .container {
         padding-left: 1rem;
         padding-right: 1rem;
     }
-
-    .contact-details-section h2 {
+    .about-section h2, .service-section h2, .contact-details-section h2 {
         font-size: 1.8rem;
     }
-    .contact-details-section h3 {
+    .about-section h3, .service-section h3, .contact-details-section h3 { /* For .contact-details-section h3 */
         font-size: 1.3rem;
     }
+    .about-section p, .about-section ul,
+    .service-section p, .service-section ul,
     .contact-details-section p {
         font-size: 1rem;
     }
