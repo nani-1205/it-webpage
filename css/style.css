@@ -29,12 +29,12 @@
     --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
 
-    /* --- Navbar Height Variables --- */
-    /* Measure your actual navbar height when it's in the "scrolled" state (white background) */
-    /* This includes padding + content. A common value is between 60px and 80px. */
-    --navbar-height-scrolled: 70px; /* <<< ADJUST THIS VALUE ACCURATELY! */
-    /* Initial height might be different if padding changes, used for hero sections */
-    --navbar-height-initial: 85px;  /* <<< ADJUST THIS VALUE ACCURATELY! */
+    /* --- Navbar Height Variables (Updated from your screenshots) --- */
+    --navbar-height-initial: 81.6px;
+    --navbar-height-scrolled: 65.6px;
+    /* For mobile, measure the scrolled navbar height if it's different.
+       If it's the same as desktop scrolled, this is fine. */
+    --navbar-height-scrolled-mobile: 65.6px;
 }
 
 body {
@@ -199,23 +199,7 @@ html { scroll-behavior: smooth; }
     width: 100%;
 }
 
-/* .nav-cta-button was removed from header.html, styles can be kept or removed */
-/*
-.nav-cta-button {
-    padding: 0.6rem 1.5rem;
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    text-decoration: none;
-    border-radius: var(--border-radius-sm);
-    font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-left: 1.5rem;
-}
-.nav-cta-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-*/
+/* .nav-cta-button styles removed as the button was removed from HTML */
 
 .hamburger {
     display: none;
@@ -247,7 +231,7 @@ html { scroll-behavior: smooth; }
     text-align: center;
     position: relative;
     color: var(--text-light);
-    padding-top: var(--navbar-height-initial); /* Offset for initial navbar height */
+    padding-top: var(--navbar-height-initial);
     padding-bottom: 4rem;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -296,7 +280,7 @@ html { scroll-behavior: smooth; }
     color: var(--text-light-secondary);
 }
 
-.cta-button {
+.cta-button { /* General CTA button, used by Hero CTA and other buttons */
     display: inline-block;
     padding: 0.9rem 2.2rem;
     background: var(--primary-color);
@@ -309,23 +293,17 @@ html { scroll-behavior: smooth; }
     border: none;
     box-shadow: var(--shadow-sm);
 }
-.hero-cta {
+.hero-cta { /* Specific to Hero, inherits from .cta-button */
     opacity: 0;
     animation: fadeInUp 1s ease 0.9s forwards;
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
-    background-color: var(--primary-color);
-    color: var(--text-light);
+    /* background-color and color inherited from .cta-button */
 }
-.hero-cta:hover {
+.hero-cta:hover, .cta-button:hover { /* Combined hover for consistency */
     background-color: #0056b3;
     transform: translateY(-3px) scale(1.02);
     box-shadow: var(--shadow-md);
-}
-.cta-button:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: var(--shadow-md);
-    background-color: #0056b3;
 }
 
 /* --- Comprehensive IT Services (Core Solutions) --- */
@@ -581,7 +559,7 @@ html { scroll-behavior: smooth; }
     margin-right: 0.5rem;
     color: var(--primary-color);
 }
-.footer-section ul { list-style: none; padding-left: 0; } /* Added padding-left: 0 */
+.footer-section ul { list-style: none; padding-left: 0; }
 .footer-section ul li { margin-bottom: 0.8rem; }
 .footer-section ul li a, .footer-section p a {
     color: #bdc3c7;
@@ -645,24 +623,11 @@ html { scroll-behavior: smooth; }
 }
 
 @keyframes heroBackgroundAnimation {
-    0% {
-        background-size: 110% auto;
-        background-position: 50% 50%;
-    }
-    25% {
-        background-position: 55% 45%;
-    }
-    50% {
-        background-size: 115% auto;
-        background-position: 45% 55%;
-    }
-    75% {
-        background-position: 50% 40%;
-    }
-    100% {
-        background-size: 110% auto;
-        background-position: 50% 50%;
-    }
+    0% { background-size: 110% auto; background-position: 50% 50%; }
+    25% { background-position: 55% 45%; }
+    50% { background-size: 115% auto; background-position: 45% 55%; }
+    75% { background-position: 50% 40%; }
+    100% { background-size: 110% auto; background-position: 50% 50%; }
 }
 
 /* --- Scroll Progress Bar --- */
@@ -679,47 +644,40 @@ html { scroll-behavior: smooth; }
 
 /* --- General Page Adjustments for Fixed Header --- */
 .page-content-after-fixed-header {
-    padding-top: var(--navbar-height-scrolled); /* Use the CSS variable for scrolled navbar height */
+    padding-top: var(--navbar-height-scrolled);
 }
 
-
-/* === About Page Specific Styles (Moved from about-us.html) === */
+/* === About Page Specific Styles === */
 .about-page-hero {
     background: var(--primary-gradient);
     color: var(--text-light);
-    /* padding-top is handled by .page-content-after-fixed-header */
     padding-bottom: 4rem;
     padding-left: 2rem;
     padding-right: 2rem;
     text-align: center;
+    /* padding-top handled by .page-content-after-fixed-header */
 }
-
 .about-page-hero h1 {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     margin-bottom: 1rem;
     color: var(--text-light);
 }
-
 .about-page-hero .section-description {
     color: var(--text-light-secondary);
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
-
 .about-page-content {
-    padding-top: 4rem; /* Internal padding for the content itself */
+    padding-top: 4rem; /* Internal padding */
     padding-bottom: 4rem;
 }
-
 .about-page-content .container {
     max-width: 900px;
 }
-
 .about-section {
     margin-bottom: 3rem;
 }
-
 .about-section h2 {
     font-size: 2rem;
     color: var(--primary-color);
@@ -728,7 +686,6 @@ html { scroll-behavior: smooth; }
     border-bottom: 2px solid var(--light-accent-color);
     font-weight: 600;
 }
-
 .about-section p,
 .about-section ul {
     font-size: 1.05rem;
@@ -747,7 +704,6 @@ html { scroll-behavior: smooth; }
 .about-section ul li strong {
     color: var(--text-dark);
 }
-
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -785,38 +741,32 @@ html { scroll-behavior: smooth; }
     color: var(--secondary-color);
 }
 
-
-/* === Contact Page Specific Styles (Moved from contact.html) === */
+/* === Contact Page Specific Styles === */
 .contact-content-area {
     padding-top: 4rem; /* Internal top padding for the content block */
     padding-bottom: 4rem; /* Internal bottom padding */
 }
-
-/* Ensure the container for contact details is centered and has appropriate width */
 .contact-content-area .container {
-    max-width: 700px; /* Adjusted for single column content */
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
-
-.contact-details-section h2 { /* Main title "Our Contact Details" */
+.contact-details-section h2 {
     font-size: 2.2rem;
     color: var(--primary-color);
     margin-bottom: 2rem;
     padding-bottom: 0.75rem;
     border-bottom: 2px solid var(--light-accent-color);
-    text-align: center; /* Center the main title */
+    text-align: center;
     font-weight: 600;
 }
-
-.contact-details-section h3 { /* Sub-heading "Office Hours" */
+.contact-details-section h3 {
     font-size: 1.5rem;
     color: var(--text-dark);
-    margin-top: 2.5rem; /* Space above this sub-heading */
-    margin-bottom: 1rem; /* Space below this sub-heading */
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
     font-weight: 600;
 }
-
 .contact-details-section p {
     font-size: 1.1rem;
     line-height: 1.9;
@@ -825,29 +775,25 @@ html { scroll-behavior: smooth; }
     display: flex;
     align-items: center;
 }
-
 .contact-details-section p i {
     margin-right: 1rem;
     color: var(--primary-color);
-    width: 22px; /* Fixed width for icon alignment */
-    font-size: 1.2rem; /* Slightly larger icons */
-    text-align: center; /* Center icon within its allocated width */
+    width: 22px;
+    font-size: 1.2rem;
+    text-align: center;
 }
-
 .contact-details-section p a {
-    color: var(--primary-color); /* Make links stand out */
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
 }
-
 .contact-details-section p a:hover {
     text-decoration: underline;
 }
-
-.map-container { /* Optional map styles */
+.map-container {
     margin-top: 3rem;
     height: 400px;
-    background: var(--light-accent-color); /* Placeholder background */
+    background: var(--light-accent-color);
     border-radius: var(--border-radius-md);
     display: flex;
     align-items: center;
@@ -856,10 +802,10 @@ html { scroll-behavior: smooth; }
     border: 1px solid #ddd;
 }
 
-
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
-    /* .nav-cta-button { display: none; } /* Already removed from HTML */
+    /* .nav-cta-button was removed, so this rule is not strictly needed but harmless */
+    .nav-cta-button { display: none; }
 }
 
 @media (max-width: 768px) {
@@ -904,7 +850,7 @@ html { scroll-behavior: smooth; }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .hero { padding-top: calc(var(--navbar-height-scrolled) + 1rem); } /* Use scrolled height for mobile */
+    .hero { padding-top: var(--navbar-height-scrolled-mobile); }
     .hero h1 { font-size: 2.2rem; }
     .hero p { font-size: 1rem; }
     .section-title { font-size: 2rem; }
@@ -940,28 +886,26 @@ html { scroll-behavior: smooth; }
     }
     .social-links { justify-content: center; }
 
-    /* Adjust navbar overlap padding for mobile if necessary */
-    /* Calculate mobile navbar height: (0.75rem * 16px * 2) + content height ~ 60px */
-    :root {
-      --navbar-height-scrolled-mobile: 60px; /* Example, adjust this */
-    }
     .page-content-after-fixed-header {
         padding-top: var(--navbar-height-scrolled-mobile);
     }
 
-    /* About page hero responsive adjustments */
     .about-page-hero h1 {
         font-size: clamp(2rem, 6vw, 2.8rem);
     }
+    .about-page-content .container,
+    .contact-content-area .container {
+        padding-left: 1rem; /* Reduce padding on smaller screens for more content width */
+        padding-right: 1rem;
+    }
 
-    /* Contact page responsive adjustments */
     .contact-details-section h2 {
-        font-size: 1.8rem; /* Adjust title size for mobile */
+        font-size: 1.8rem;
     }
     .contact-details-section h3 {
-        font-size: 1.3rem; /* Adjust sub-title size for mobile */
+        font-size: 1.3rem;
     }
     .contact-details-section p {
-        font-size: 1rem; /* Adjust text size for mobile */
+        font-size: 1rem;
     }
 }
