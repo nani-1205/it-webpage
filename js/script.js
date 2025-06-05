@@ -3,15 +3,29 @@ function initializePageScripts() {
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     if (navbar) {
-        window.addEventListener('scroll', () => {
+        const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html') || window.location.pathname.endsWith('/'); // Adjust if your homepage path is different
+
+        // Function to handle navbar scroll state
+        const handleNavbarScroll = () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
-                navbar.classList.remove('scrolled');
+                // Only remove 'scrolled' class if on homepage and at the top
+                if (isHomePage) {
+                    navbar.classList.remove('scrolled');
+                }
             }
-        });
-        // Trigger scroll once in case page loads scrolled
-        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        };
+
+        // Apply 'scrolled' class immediately on subpages
+        if (!isHomePage) {
+            navbar.classList.add('scrolled');
+        } else {
+            // For homepage, check initial scroll position
+            handleNavbarScroll(); // Call once to set initial state on homepage
+        }
+
+        window.addEventListener('scroll', handleNavbarScroll);
     }
 
     // Hamburger menu toggle
@@ -38,7 +52,6 @@ function initializePageScripts() {
     }
 
     // Animate on scroll
-    // Re-query scrollElements as they are dynamically loaded
     const scrollElements = document.querySelectorAll('.animate-on-scroll');
     const elementInView = (el, threshold = 0.8) => {
         if (!el) return false;
@@ -62,7 +75,7 @@ function initializePageScripts() {
         });
     };
     window.addEventListener('scroll', handleScrollAnimation);
-    setTimeout(handleScrollAnimation, 200); // Increased delay slightly for content to settle
+    setTimeout(handleScrollAnimation, 200);
 
     // Scroll progress bar
     const scrollProgress = document.querySelector('.scroll-progress');
@@ -76,14 +89,12 @@ function initializePageScripts() {
     }
 
     // Current Year for Footer
-    // Re-query yearSpan as it's dynamically loaded
     const yearSpan = document.getElementById('currentYear');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
     // Smooth scroll for anchor links
-    // Re-query anchors as they are dynamically loaded
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -92,9 +103,8 @@ function initializePageScripts() {
                 document.querySelector(href).scrollIntoView({
                     behavior: 'smooth'
                 });
-                // Close mobile menu if open
-                if (navMenu && navMenu.classList.contains('active')) { // Ensure navMenu is defined
-                    if (hamburger) hamburger.classList.remove('active'); // Ensure hamburger is defined
+                if (navMenu && navMenu.classList.contains('active')) {
+                    if (hamburger) hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                     document.body.classList.remove('no-scroll');
                 }
@@ -120,7 +130,6 @@ async function loadModules() {
             .then(html => {
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = html;
-                // Insert all children of tempDiv before the placeholder, then remove placeholder
                 while (tempDiv.firstChild) {
                     el.parentNode.insertBefore(tempDiv.firstChild, el);
                 }
@@ -128,7 +137,6 @@ async function loadModules() {
             })
             .catch(error => {
                 console.error('Error loading module:', error);
-                // Create a paragraph to show the error message in place of the module
                 const errorP = document.createElement('p');
                 errorP.style.color = 'red';
                 errorP.textContent = `Error loading ${filePath}. Check console.`;
@@ -140,12 +148,10 @@ async function loadModules() {
 
     try {
         await Promise.all(fetchPromises);
-        // All modules are loaded, now initialize scripts
         initializePageScripts();
     } catch (error) {
         console.error("Error loading one or more modules:", error);
     }
 }
 
-// Start loading modules when the DOM is initially ready
 document.addEventListener('DOMContentLoaded', loadModules);
