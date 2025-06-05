@@ -37,17 +37,14 @@
     max-width: 100%;
     max-height: 60px;
     width: auto;
-    opacity: 5; /* UPDATED: Increased base opacity */
-    filter: brightness(115%); /* ADDED: CSS filter to increase brightness */
-    transition: opacity 0.3s ease, filter 0.3s ease; /* UPDATED: Added filter to transition */
+    opacity: 0.85; /* CORRECTED: Value between 0 and 1 */
+    filter: brightness(115%);
+    transition: opacity 0.3s ease, filter 0.3s ease;
     /* filter: grayscale(100%); */
 }
 
 .client-logo-item img:hover {
-    opacity: 1; /* On hover, make fully opaque */
-    /* The brightness filter from the base .client-logo-item img will still apply,
-       or you could set filter: brightness(120%); here for even more pop on hover if desired.
-       For now, just opacity change on hover. */
+    opacity: 1;
     /* filter: grayscale(0%); */
 }
 
