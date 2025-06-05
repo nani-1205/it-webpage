@@ -38,6 +38,10 @@ body {
     background-color: var(--bg-white);
 }
 
+body.no-scroll { /* Added this rule */
+    overflow: hidden;
+}
+
 html { scroll-behavior: smooth; }
 
 /* --- Global Helper Classes --- */
