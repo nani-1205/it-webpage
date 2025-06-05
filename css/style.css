@@ -7,7 +7,6 @@
 :root {
     --primary-color: #007bff;
     --primary-gradient: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    /* ... rest of your :root variables ... */
     --secondary-color: #6c757d;
     --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --light-accent-color: #e9ecef;
@@ -48,7 +47,6 @@ html { scroll-behavior: smooth; }
     padding: 0 2rem;
 }
 
-/* ... (Keep .section, .section-title, .section-subtitle, .section-description as they were) ... */
 .section {
     padding: 5rem 0;
     overflow: hidden;
@@ -107,23 +105,22 @@ html { scroll-behavior: smooth; }
     color: var(--text-light-secondary);
 }
 
-
 /* --- Navbar --- */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     background: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more subtle border */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     z-index: 1000;
     transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .navbar.scrolled {
-    padding: 0.75rem 0;
-    background: rgba(255, 255, 255, 0.98); /* Almost opaque white */
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.98);
     box-shadow: var(--shadow-md);
     border-bottom-color: transparent;
 }
@@ -138,42 +135,16 @@ html { scroll-behavior: smooth; }
 }
 
 .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-light); /* White for initial transparent state */
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    height: 35px; /* Adjust desired height of the logo area */
-    position: relative; /* For absolute positioning of child images if needed, though not strictly necessary here */
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
 }
-
-.logo img {
-    height: 100%; /* Image fills the height of .logo container */
-    width: auto;
-    display: block; /* Prevents extra space below image */
-    transition: opacity 0.3s ease; /* For smooth switching */
+.navbar.scrolled .logo {
+    color: var(--primary-color); /* Primary color for scrolled white navbar */
 }
-
-.logo .logo-initial {
-    opacity: 1; /* Visible by default */
-}
-.logo .logo-scrolled {
-    opacity: 0; /* Hidden by default */
-    position: absolute; /* Overlay initial logo, same position */
-    top: 0;
-    left: 0;
-}
-
-.navbar.scrolled .logo .logo-initial {
-    opacity: 0; /* Hide initial logo on scroll */
-}
-.navbar.scrolled .logo .logo-scrolled {
-    opacity: 1; /* Show scrolled logo on scroll */
-}
-
-/* If your white logo needs a very subtle shadow to pop on complex bright parts of the hero image: */
-/* .navbar:not(.scrolled) .logo .logo-initial {
-    filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.3));
-} */
-
 
 .nav-menu {
     display: flex;
@@ -183,14 +154,14 @@ html { scroll-behavior: smooth; }
 
 .nav-menu .nav-link {
     text-decoration: none;
-    color: var(--text-light);
+    color: var(--text-light); /* White for initial transparent state */
     font-weight: 500;
     position: relative;
     transition: color 0.3s ease;
     padding: 0.5rem 0;
 }
 .navbar.scrolled .nav-menu .nav-link {
-    color: var(--text-dark);
+    color: var(--text-dark); /* Dark for scrolled white navbar */
 }
 
 .nav-menu .nav-link::after {
@@ -240,13 +211,13 @@ html { scroll-behavior: smooth; }
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: var(--text-light);
+    background: var(--text-light); /* White for initial transparent state */
     margin: 4px 0;
     border-radius: 2px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .navbar.scrolled .hamburger span {
-    background: var(--text-dark);
+    background: var(--text-dark); /* Dark for scrolled white navbar */
 }
 
 /* --- Hero Section --- */
@@ -262,7 +233,7 @@ html { scroll-behavior: smooth; }
     text-align: center;
     position: relative;
     color: var(--text-light);
-    padding-top: 8rem; /* Adjust based on final navbar height */
+    padding-top: 8rem;
     padding-bottom: 4rem;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -277,13 +248,9 @@ html { scroll-behavior: smooth; }
     left: 0;
     right: 0;
     bottom: 0;
-    /* Increased opacity for better contrast with yellow in logo if white logo isn't enough */
-    background: rgba(20, 30, 40, 0.65); /* From 0.60 to 0.65 or 0.70 */
+    background: rgba(20, 30, 40, 0.65);
     z-index: 1;
 }
-
-/* ... (Rest of the CSS: .hero-content, .hero h1, .hero p, .cta-button, .hero-cta, other sections, animations, responsive, etc. remains THE SAME as the previous full CSS.) ... */
-/* I'll include it all below for completeness. */
 
 .hero-content {
     max-width: 800px;
@@ -347,6 +314,7 @@ html { scroll-behavior: smooth; }
     background-color: #0056b3;
 }
 
+/* --- Comprehensive IT Services (Core Solutions) --- */
 .comprehensive-services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -392,6 +360,7 @@ html { scroll-behavior: smooth; }
     line-height: 1.6;
 }
 
+/* --- Who We Are Section --- */
 .who-we-are .content-section {
     display: flex;
     flex-wrap: wrap;
@@ -422,6 +391,7 @@ html { scroll-behavior: smooth; }
     margin: 0 auto;
 }
 
+/* --- Solutions Offered Section --- */
 .solutions-offered .solutions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -492,6 +462,7 @@ html { scroll-behavior: smooth; }
     color: var(--text-light);
 }
 
+/* --- Our Industries Section --- */
 .industries-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -532,6 +503,7 @@ html { scroll-behavior: smooth; }
     display: block;
 }
 
+/* --- CTA Section --- */
 .cta-section {
     padding: 5rem 0;
     background: var(--primary-gradient);
@@ -562,6 +534,7 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
+/* --- Footer --- */
 .footer {
     background: var(--text-dark);
     color: #bdc3c7;
@@ -642,6 +615,7 @@ html { scroll-behavior: smooth; }
 }
 .footer-bottom a:hover { color: var(--text-light); }
 
+/* --- Animations --- */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
@@ -677,6 +651,7 @@ html { scroll-behavior: smooth; }
     }
 }
 
+/* --- Scroll Progress Bar --- */
 .scroll-progress {
     position: fixed;
     top: 0;
@@ -688,6 +663,7 @@ html { scroll-behavior: smooth; }
     transition: width 0.05s ease-out;
 }
 
+/* --- Responsive Design --- */
 @media (max-width: 992px) {
     .nav-cta-button { display: none; }
 }
@@ -695,7 +671,7 @@ html { scroll-behavior: smooth; }
 @media (max-width: 768px) {
     .navbar { padding: 0.75rem 0; }
     .navbar.scrolled { padding: 0.75rem 0; }
-    .logo { height: 30px; }
+    .logo { font-size: 1.2rem; } /* Adjust text logo size for mobile */
 
     .nav-menu {
         position: fixed;
