@@ -8,18 +8,28 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <meta name="description" content="NS SYSTEMES IT SOLUTIONS - Empowering your organization with tailored IT solutions.">
 
-        <link rel="shortcut icon" href="img/main-log.svg"> <!-- Keep your favicon -->
+        <link rel="shortcut icon" href="img/main-log.svg">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <!-- Main Stylesheet -->
         <link rel="stylesheet" href="css/style.css">
+        <!-- Testimonials Module Stylesheet -->
+        <link rel="stylesheet" href="css/testimonials-styles.css"> <!-- ADD THIS -->
+        <!-- Our Clients Module Stylesheet -->
+        <link rel="stylesheet" href="css/our-clients-styles.css">   <!-- ADD THIS -->
+
     </head>
     <body>
         <div class="scroll-progress"></div>
 
+        <!-- ==========================
+             HEADER (NAVBAR) MODULE
+        =========================== -->
         <nav class="navbar">
             <div class="nav-container">
                 <a href="index.html" class="logo">
-                    NS SYSTEMES IT SOLUTIONS <!-- Text logo restored -->
+                    NS SYSTEMES IT SOLUTIONS
                 </a>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link">Home</a></li>
@@ -38,7 +48,9 @@
             </div>
         </nav>
 
-        <!-- ... (Rest of your HTML body remains the same) ... -->
+        <!-- ==========================
+             HERO SECTION MODULE
+        =========================== -->
         <section class="hero">
             <div class="hero-content">
                 <h1>Empowering Your Organization with Tailored IT Solutions</h1>
@@ -47,6 +59,9 @@
             </div>
         </section>
 
+        <!-- ===========================================
+             COMPREHENSIVE IT SERVICES MODULE (Core Solutions)
+        ============================================ -->
         <section id="core-solutions" class="section comprehensive-services bg-light">
             <div class="container">
                 <p class="section-subtitle animate-on-scroll">Our Core Solutions</p>
@@ -84,6 +99,9 @@
             </div>
         </section>
 
+        <!-- ==========================
+             WHO WE ARE SECTION MODULE
+        =========================== -->
         <section id="about-us" class="section who-we-are">
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Who We Are</h2>
@@ -100,6 +118,39 @@
             </div>
         </section>
 
+        <!-- ==========================
+             OUR CLIENTS SECTION MODULE
+        =========================== -->
+        <section class="section clients">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Trusted By Leading Companies</h2>
+                <div class="clients-logo-grid animate-on-scroll">
+                    <div class="client-logo-item">
+                        <img src="img/client-logo-1.png" alt="Client Company 1 Logo">
+                    </div>
+                    <div class="client-logo-item">
+                        <img src="img/client-logo-2.png" alt="Client Company 2 Logo">
+                    </div>
+                    <div class="client-logo-item">
+                        <img src="img/client-logo-3.svg" alt="Client Company 3 Logo">
+                    </div>
+                    <div class="client-logo-item">
+                        <img src="img/client-logo-4.png" alt="Client Company 4 Logo">
+                    </div>
+                    <div class="client-logo-item">
+                        <img src="img/client-logo-5.png" alt="Client Company 5 Logo">
+                    </div>
+                    <div class="client-logo-item">
+                        <img src="img/client-logo-6.svg" alt="Client Company 6 Logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END OUR CLIENTS SECTION MODULE -->
+
+        <!-- =======================================
+             SOLUTIONS OFFERED SECTION MODULE
+        ======================================== -->
         <section id="solutions-offered" class="section solutions-offered bg-dark-textured">
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Solutions Offered</h2>
@@ -143,7 +194,63 @@
             </div>
         </section>
 
-        <section class="section industries bg-light">
+        <!-- ==========================
+             TESTIMONIALS SECTION MODULE
+        =========================== -->
+        <section class="section testimonials bg-light">
+            <div class="container">
+                <p class="section-subtitle animate-on-scroll">Client Feedback</p>
+                <h2 class="section-title animate-on-scroll">What Our Clients Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">"Working with NS Systemes has been a game-changer for our IT infrastructure. Their expertise and proactive support are second to none. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <img src="img/client-avatar-1.jpg" alt="Client 1 Avatar" class="testimonial-avatar">
+                            <div>
+                                <h4 class="author-name">John Doe</h4>
+                                <p class="author-title">CEO, Tech Solutions Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animate-on-scroll" style="animation-delay: 0.15s;">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">"The cloud migration project was handled seamlessly. The team was professional, efficient, and kept us informed every step of the way. Our operations have never been smoother."</p>
+                        <div class="testimonial-author">
+                            <img src="img/client-avatar-2.jpg" alt="Client 2 Avatar" class="testimonial-avatar">
+                            <div>
+                                <h4 class="author-name">Jane Smith</h4>
+                                <p class="author-title">Operations Manager, Global Corp</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animate-on-scroll" style="animation-delay: 0.3s;">
+                        <div class="testimonial-quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">"Their IT cost optimization strategies saved us a significant amount without compromising on quality or security. A truly valuable partner for any business looking to improve efficiency."</p>
+                        <div class="testimonial-author">
+                            <img src="img/client-avatar-3.jpg" alt="Client 3 Avatar" class="testimonial-avatar">
+                            <div>
+                                <h4 class="author-name">Robert Brown</h4>
+                                <p class="author-title">CFO, Innovate Ltd.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END TESTIMONIALS SECTION MODULE -->
+
+
+        <!-- =================================
+             OUR INDUSTRIES SECTION MODULE
+        ================================== -->
+        <section class="section industries"> <!-- Removed bg-light to alternate with testimonials -->
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Our Industries</h2>
                 <p class="section-description animate-on-scroll" style="text-align:center; max-width:700px; margin: -2rem auto 3rem auto;">
@@ -166,6 +273,9 @@
             </div>
         </section>
 
+        <!-- ==========================
+             CTA SECTION MODULE
+        =========================== -->
         <section class="cta-section section">
             <div class="container">
                 <h2 class="animate-on-scroll">Ready to Transform Your Business?</h2>
@@ -174,6 +284,9 @@
             </div>
         </section>
 
+        <!-- ==========================
+             FOOTER MODULE
+        =========================== -->
         <footer class="footer">
             <div class="container">
                 <div class="footer-grid">
@@ -211,8 +324,8 @@
                     <div class="footer-section">
                         <h4>Contact & Support</h4>
                         <p><i class="fas fa-phone-alt"></i> <a href="tel:+918977540698">+918977540698</a></p>
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:psvs.swarop@gmail.com">psvs.swarop@gmail.com</a></p>
-                        <p><i class="fas fa-map-marker-alt"></i> HYD,INDIA</p>
+                        <p><i class="fas fa-envelope"></i> <a href="psvs.swarop@gmail.com">psvs.swarop@gmail.com</a></p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Innovation City, USA</p>
                     </div>
                 </div>
                 <div class="footer-bottom">
