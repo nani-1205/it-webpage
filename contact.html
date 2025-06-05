@@ -14,18 +14,16 @@
         <link rel="stylesheet" href="css/style.css">
         <!-- Add specific styles for contact page if necessary -->
         <style>
-            /* .contact-page-hero STYLES ARE NO LONGER NEEDED IF HERO IS REMOVED */
-            /* You might want to adjust padding/margin for .contact-content-area
-               if it's now the first element after the navbar */
+            /* .contact-page-hero styles would be removed or not used if hero is gone */
 
             .contact-content-area {
                 padding: 4rem 0;
-                /* Add top padding to account for the fixed navbar
-                   if this is the first visible content block */
+                /* Add padding-top to account for fixed navbar if this is the first visible element */
+                /* This value should roughly match your navbar's height */
             }
-             .contact-content-area.page-content-after-fixed-header { /* Apply this class if hero is removed */
-                padding-top: calc(var(--navbar-height-scrolled) + 4rem); /* Navbar height + desired top padding */
-             }
+            .contact-content-area.page-content-after-fixed-header {
+                 padding-top: calc(var(--navbar-height-scrolled) + 4rem); /* Navbar height + desired top padding */
+            }
 
             .contact-content-area .container {
                 max-width: 900px;
@@ -103,7 +101,7 @@
             <!-- Header Module -->
             <div data-include="modules/header.html"></div>
 
-            <!-- Contact Page Specific Hero - REMOVED -->
+            <!-- Contact Page Specific Hero REMOVED -->
             <!--
             <header class="contact-page-hero page-content-after-fixed-header">
                 <div class="container">
@@ -114,12 +112,12 @@
             -->
 
             <!-- Main Content for Contact Us Page -->
-            <!-- Add class "page-content-after-fixed-header" to this main element if the hero above is removed -->
+            <!-- Added .page-content-after-fixed-header here if the hero is removed -->
             <main class="contact-content-area page-content-after-fixed-header">
                 <div class="container">
                     <div class="row" style="display: flex; flex-wrap: wrap; gap: 2rem;">
                         <div class="contact-form-section" style="flex: 2; min-width: 300px;">
-                            <h2>Send Us a Message</h2> <!-- This h2 is still here -->
+                            <h2>Send Us a Message</h2> <!-- This h2 remains -->
                             <form id="contactForm" action="YOUR_FORM_HANDLER_URL" method="POST">
                                 <div class="form-group">
                                     <label for="name">Full Name</label>
@@ -146,7 +144,7 @@
                         </div>
 
                         <div class="contact-details-section" style="flex: 1; min-width: 280px;">
-                            <h2>Our Contact Details</h2>
+                            <h2>Our Contact Details</h2> <!-- This h2 remains -->
                             <p><i class="fas fa-map-marker-alt"></i> Hyderabad, INDIA</p>
                             <p><i class="fas fa-phone-alt"></i> <a href="tel:+918977540698">+91 89775 40698</a></p>
                             <p><i class="fas fa-envelope"></i> <a href="mailto:info@nsystemes.com">info@nsystemes.com</a></p> <!-- Update email -->
