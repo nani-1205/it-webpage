@@ -11,14 +11,8 @@
         <link rel="shortcut icon" href="img/main-log.svg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        <!-- Main Stylesheet -->
         <link rel="stylesheet" href="css/style.css">
-        <!-- Testimonials Module Stylesheet (Optional for this page, include if needed) -->
-        <!-- <link rel="stylesheet" href="css/testimonials-styles.css"> -->
-        <!-- Our Clients Module Stylesheet (Optional for this page, include if needed) -->
-        <!-- <link rel="stylesheet" href="css/our-clients-styles.css"> -->
-
-        <!-- Add specific styles for about page if necessary -->
+        <!-- Add specific styles for about page content if necessary, or put in style.css -->
         <style>
             .about-page-hero {
                 background: var(--primary-gradient);
@@ -31,56 +25,8 @@
                 font-size: clamp(2.5rem, 5vw, 3.5rem);
                 margin-bottom: 1rem;
             }
-            .about-page-content {
-                padding: 4rem 0;
-            }
-            .about-page-content .container {
-                max-width: 900px;
-            }
-            .about-section {
-                margin-bottom: 3rem;
-            }
-            .about-section h2 {
-                font-size: 2rem;
-                color: var(--primary-color);
-                margin-bottom: 1rem;
-                padding-bottom: 0.5rem;
-                border-bottom: 2px solid var(--light-accent-color);
-            }
-            .about-section p {
-                font-size: 1.05rem;
-                line-height: 1.8;
-                margin-bottom: 1rem;
-            }
-            .team-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 2rem;
-                margin-top: 2rem;
-            }
-            .team-member-card {
-                background: var(--bg-white);
-                padding: 1.5rem;
-                border-radius: var(--border-radius-md);
-                box-shadow: var(--shadow-sm);
-                text-align: center;
-            }
-            .team-member-card img {
-                width: 120px;
-                height: 120px;
-                border-radius: 50%;
-                object-fit: cover;
-                margin-bottom: 1rem;
-                border: 3px solid var(--primary-color);
-            }
-            .team-member-card h3 {
-                font-size: 1.2rem;
-                margin-bottom: 0.25rem;
-            }
-            .team-member-card p.title {
-                font-size: 0.9rem;
-                color: var(--text-muted);
-            }
+            /* Styles for .about-page-content, .about-section, .team-grid etc. should be in style.css
+               or a dedicated about-us-styles.css if they are specific to this layout */
         </style>
     </head>
     <body>
@@ -98,54 +44,8 @@
                 </div>
             </header>
 
-            <!-- Main Content for About Us Page -->
-            <main class="about-page-content">
-                <div class="container">
-                    <section class="about-section animate-on-scroll">
-                        <h2>Our Mission</h2>
-                        <p>Our mission is to bridge the gap between complex technology and business success. We strive to provide tailored IT solutions that enhance efficiency, drive growth, and secure our clients' digital assets. We are committed to understanding your unique challenges and delivering results that exceed expectations.</p>
-                        <p>We believe in building long-term partnerships based on trust, transparency, and a shared vision for innovation.</p>
-                    </section>
-
-                    <section class="about-section animate-on-scroll" style="animation-delay: 0.1s;">
-                        <h2>Our Vision</h2>
-                        <p>To be a leading IT solutions provider recognized for our expertise, client-centric approach, and commitment to technological advancement. We envision a future where businesses of all sizes can leverage the full potential of technology to achieve their strategic goals and thrive in an ever-evolving digital landscape.</p>
-                    </section>
-
-                    <section class="about-section animate-on-scroll" style="animation-delay: 0.2s;">
-                        <h2>Our Values</h2>
-                        <ul>
-                            <li><strong>Client Focus:</strong> Your success is our priority. We listen, understand, and deliver.</li>
-                            <li><strong>Innovation:</strong> We continuously explore new technologies and approaches to provide cutting-edge solutions.</li>
-                            <li><strong>Integrity:</strong> We operate with honesty, transparency, and a strong sense of ethics.</li>
-                            <li><strong>Excellence:</strong> We are committed to delivering high-quality services and achieving outstanding results.</li>
-                            <li><strong>Collaboration:</strong> We work closely with our clients and as a team to achieve shared goals.</li>
-                        </ul>
-                    </section>
-
-                    <section class="about-section animate-on-scroll" style="animation-delay: 0.3s;">
-                        <h2>Meet Our Team (Placeholder)</h2>
-                        <p>Our team is composed of passionate, experienced, and dedicated IT professionals. We bring a diverse range of skills and expertise to every project. (More details and actual team member profiles would go here.)</p>
-                        <div class="team-grid">
-                            <div class="team-member-card animate-on-scroll" style="animation-delay: 0.4s;">
-                                <img src="img/client-avatar-1.jpg" alt="Team Member 1"> <!-- Placeholder image -->
-                                <h3>John Doe</h3>
-                                <p class="title">Chief Executive Officer</p>
-                            </div>
-                            <div class="team-member-card animate-on-scroll" style="animation-delay: 0.5s;">
-                                <img src="img/client-avatar-2.jpg" alt="Team Member 2"> <!-- Placeholder image -->
-                                <h3>Jane Smith</h3>
-                                <p class="title">Chief Technology Officer</p>
-                            </div>
-                            <div class="team-member-card animate-on-scroll" style="animation-delay: 0.6s;">
-                                <img src="img/client-avatar-3.jpg" alt="Team Member 3"> <!-- Placeholder image -->
-                                <h3>Robert Brown</h3>
-                                <p class="title">Lead Solutions Architect</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </main>
+            <!-- Include the About Us Content Module -->
+            <div data-include="modules/about-us-content.html"></div>
 
             <!-- Footer Module -->
             <div data-include="modules/footer.html"></div>
