@@ -11,71 +11,8 @@
         <link rel="shortcut icon" href="img/main-log.svg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+        <!-- Main Stylesheet (will contain all necessary styles) -->
         <link rel="stylesheet" href="css/style.css">
-        <!-- Add specific styles for contact page if necessary -->
-        <style>
-            .contact-content-area {
-                padding: 4rem 0;
-            }
-            .contact-content-area.page-content-after-fixed-header {
-                 padding-top: calc(var(--navbar-height-scrolled) + 4rem); /* Navbar height + desired top padding */
-            }
-            .contact-content-area .container {
-                max-width: 700px; /* Adjusted max-width as there's only one column now */
-                margin: 0 auto; /* Center the container */
-            }
-            .contact-details-section {
-                margin-bottom: 3rem;
-            }
-            .contact-details-section h2 {
-                font-size: 2.2rem; /* Slightly larger title for details */
-                color: var(--primary-color);
-                margin-bottom: 2rem; /* More space below title */
-                padding-bottom: 0.75rem;
-                border-bottom: 2px solid var(--light-accent-color);
-                text-align: center; /* Center the main title */
-            }
-             .contact-details-section h3 { /* For sub-headings like Office Hours */
-                font-size: 1.5rem;
-                color: var(--text-dark);
-                margin-top: 2.5rem;
-                margin-bottom: 1rem;
-            }
-            .contact-details-section p {
-                font-size: 1.1rem; /* Slightly larger text */
-                line-height: 1.9;
-                margin-bottom: 1.2rem; /* More spacing between detail lines */
-                color: var(--text-muted);
-                display: flex; /* For aligning icon and text nicely */
-                align-items: center; /* Vertically align icon with text */
-            }
-            .contact-details-section p i {
-                margin-right: 1rem; /* More space after icon */
-                color: var(--primary-color);
-                width: 22px;
-                font-size: 1.2rem; /* Slightly larger icons */
-                text-align: center;
-            }
-            .contact-details-section p a {
-                color: var(--primary-color);
-                text-decoration: none;
-                font-weight: 500;
-            }
-            .contact-details-section p a:hover {
-                text-decoration: underline;
-            }
-            .map-container {
-                margin-top: 3rem;
-                height: 400px;
-                background: var(--light-accent-color);
-                border-radius: var(--border-radius-md);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--text-muted);
-                border: 1px solid #ddd;
-            }
-        </style>
     </head>
     <body>
         <div class="scroll-progress"></div>
@@ -85,6 +22,7 @@
             <div data-include="modules/header.html"></div>
 
             <!-- Main Content for Contact Us Page -->
+            <!-- The .page-content-after-fixed-header class handles navbar overlap -->
             <main class="contact-content-area page-content-after-fixed-header">
                 <div class="container">
                     <div class="contact-details-section">
@@ -100,10 +38,12 @@
                         <p><i class="fas fa-door-closed"></i> Sunday: Closed</p>
 
                         <!-- Optional: Map Placeholder -->
-                        <!-- <div class="map-container">
+                        <!--
+                        <div class="map-container">
                             <p>Map will be embedded here. (e.g., Google Maps)</p>
                             <iframe src="YOUR_GOOGLE_MAPS_EMBED_URL" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                        </div> -->
+                        </div>
+                        -->
                     </div>
                 </div>
             </main>

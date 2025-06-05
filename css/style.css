@@ -29,8 +29,12 @@
     --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
 
-    --navbar-height-initial: 87px; /* Approx (1.5rem * 2) + content. Adjust as needed. */
-    --navbar-height-scrolled: 67px; /* Approx (1rem * 2) + content. Adjust as needed. */
+    /* --- Navbar Height Variables --- */
+    /* Measure your actual navbar height when it's in the "scrolled" state (white background) */
+    /* This includes padding + content. A common value is between 60px and 80px. */
+    --navbar-height-scrolled: 70px; /* <<< ADJUST THIS VALUE ACCURATELY! */
+    /* Initial height might be different if padding changes, used for hero sections */
+    --navbar-height-initial: 85px;  /* <<< ADJUST THIS VALUE ACCURATELY! */
 }
 
 body {
@@ -118,7 +122,7 @@ html { scroll-behavior: smooth; }
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 0; /* This contributes to initial height */
+    padding: 1.5rem 0;
     background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     z-index: 1000;
@@ -126,7 +130,7 @@ html { scroll-behavior: smooth; }
 }
 
 .navbar.scrolled {
-    padding: 1rem 0; /* This contributes to scrolled height */
+    padding: 1rem 0;
     background: rgba(255, 255, 255, 0.98);
     box-shadow: var(--shadow-md);
     border-bottom-color: transparent;
@@ -195,6 +199,8 @@ html { scroll-behavior: smooth; }
     width: 100%;
 }
 
+/* .nav-cta-button was removed from header.html, styles can be kept or removed */
+/*
 .nav-cta-button {
     padding: 0.6rem 1.5rem;
     background-color: var(--primary-color);
@@ -209,6 +215,7 @@ html { scroll-behavior: smooth; }
     background-color: #0056b3;
     transform: translateY(-2px);
 }
+*/
 
 .hamburger {
     display: none;
@@ -227,7 +234,7 @@ html { scroll-behavior: smooth; }
     background: var(--text-dark);
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section (Homepage) --- */
 .hero {
     min-height: 100vh;
     background-image: url('../img/banner4.jpg');
@@ -240,7 +247,7 @@ html { scroll-behavior: smooth; }
     text-align: center;
     position: relative;
     color: var(--text-light);
-    padding-top: var(--navbar-height-initial); /* Use variable for top padding */
+    padding-top: var(--navbar-height-initial); /* Offset for initial navbar height */
     padding-bottom: 4rem;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -574,7 +581,7 @@ html { scroll-behavior: smooth; }
     margin-right: 0.5rem;
     color: var(--primary-color);
 }
-.footer-section ul { list-style: none; }
+.footer-section ul { list-style: none; padding-left: 0; } /* Added padding-left: 0 */
 .footer-section ul li { margin-bottom: 0.8rem; }
 .footer-section ul li a, .footer-section p a {
     color: #bdc3c7;
@@ -671,26 +678,17 @@ html { scroll-behavior: smooth; }
 }
 
 /* --- General Page Adjustments for Fixed Header --- */
-/* This class should be applied to the first main content block after the header on subpages */
 .page-content-after-fixed-header {
-    /* The value should be at least the height of the .navbar when it's .scrolled (white background) */
-    /* Navbar scrolled padding: 1rem (16px) top/bottom. Total 32px. Plus content height. */
-    /* Let's estimate navbar scrolled height around 65px-75px. */
-    padding-top: var(--navbar-height-scrolled); /* Using CSS variable */
+    padding-top: var(--navbar-height-scrolled); /* Use the CSS variable for scrolled navbar height */
 }
 
 
-/* --- About Page Specific Styles --- */
-/* Styles for the hero section on the about page */
+/* === About Page Specific Styles (Moved from about-us.html) === */
 .about-page-hero {
     background: var(--primary-gradient);
     color: var(--text-light);
-    /* padding-top is handled by .page-content-after-fixed-header if navbar is fixed */
-    /* If the navbar on about-us.html is transparent initially, then margin-top would be needed
-       but since we assume it will become white on scroll (or is always white on subpages),
-       padding-top on the content itself is better.
-    */
-    padding-bottom: 4rem; /* Maintain vertical padding for the hero content */
+    /* padding-top is handled by .page-content-after-fixed-header */
+    padding-bottom: 4rem;
     padding-left: 2rem;
     padding-right: 2rem;
     text-align: center;
@@ -704,22 +702,20 @@ html { scroll-behavior: smooth; }
 
 .about-page-hero .section-description {
     color: var(--text-light-secondary);
-    max-width: 800px; /* Consistent with other section descriptions */
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Styles for the main content area of the about page */
 .about-page-content {
-    padding: 4rem 0; /* Vertical padding for the main content area below the hero */
+    padding-top: 4rem; /* Internal padding for the content itself */
+    padding-bottom: 4rem;
 }
 
-/* Container within the about page content */
 .about-page-content .container {
     max-width: 900px;
 }
 
-/* Individual sections within the about page content */
 .about-section {
     margin-bottom: 3rem;
 }
@@ -740,28 +736,24 @@ html { scroll-behavior: smooth; }
     color: var(--text-muted);
     margin-bottom: 1rem;
 }
-
 .about-section ul {
     list-style-type: disc;
     list-style-position: outside;
-    padding-left: 20px; /* Standard indentation for lists */
+    padding-left: 20px;
 }
-
 .about-section ul li {
      margin-bottom: 0.5rem;
 }
 .about-section ul li strong {
-    color: var(--text-dark); /* Make strong text more prominent */
+    color: var(--text-dark);
 }
 
-/* Team Section Styles */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
-
 .team-member-card {
     background: var(--bg-white);
     padding: 2rem;
@@ -774,7 +766,6 @@ html { scroll-behavior: smooth; }
     transform: translateY(-5px);
     box-shadow: var(--shadow-md);
 }
-
 .team-member-card img {
     width: 120px;
     height: 120px;
@@ -783,23 +774,92 @@ html { scroll-behavior: smooth; }
     margin-bottom: 1.5rem;
     border: 4px solid var(--primary-color);
 }
-
 .team-member-card h3 {
     font-size: 1.3rem;
     color: var(--text-dark);
     margin-bottom: 0.35rem;
     font-weight: 600;
 }
-
 .team-member-card p.title {
     font-size: 0.95rem;
     color: var(--secondary-color);
 }
 
 
+/* === Contact Page Specific Styles (Moved from contact.html) === */
+.contact-content-area {
+    padding-top: 4rem; /* Internal top padding for the content block */
+    padding-bottom: 4rem; /* Internal bottom padding */
+}
+
+/* Ensure the container for contact details is centered and has appropriate width */
+.contact-content-area .container {
+    max-width: 700px; /* Adjusted for single column content */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-details-section h2 { /* Main title "Our Contact Details" */
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--light-accent-color);
+    text-align: center; /* Center the main title */
+    font-weight: 600;
+}
+
+.contact-details-section h3 { /* Sub-heading "Office Hours" */
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-top: 2.5rem; /* Space above this sub-heading */
+    margin-bottom: 1rem; /* Space below this sub-heading */
+    font-weight: 600;
+}
+
+.contact-details-section p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+}
+
+.contact-details-section p i {
+    margin-right: 1rem;
+    color: var(--primary-color);
+    width: 22px; /* Fixed width for icon alignment */
+    font-size: 1.2rem; /* Slightly larger icons */
+    text-align: center; /* Center icon within its allocated width */
+}
+
+.contact-details-section p a {
+    color: var(--primary-color); /* Make links stand out */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.contact-details-section p a:hover {
+    text-decoration: underline;
+}
+
+.map-container { /* Optional map styles */
+    margin-top: 3rem;
+    height: 400px;
+    background: var(--light-accent-color); /* Placeholder background */
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    border: 1px solid #ddd;
+}
+
+
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
-    .nav-cta-button { display: none; }
+    /* .nav-cta-button { display: none; } /* Already removed from HTML */
 }
 
 @media (max-width: 768px) {
@@ -810,7 +870,7 @@ html { scroll-behavior: smooth; }
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 0; /* Changed from 70px to align with top */
+        top: 0;
         height: 100vh;
         flex-direction: column;
         background-color: var(--bg-white);
@@ -819,16 +879,16 @@ html { scroll-behavior: smooth; }
         text-align: left;
         transition: left 0.35s cubic-bezier(0.23, 1, 0.32, 1);
         box-shadow: 5px 0 25px rgba(0,0,0,0.15);
-        padding: 5rem 2rem 2rem; /* Adjusted padding for content */
+        padding: 5rem 2rem 2rem;
         gap: 1.5rem;
-        z-index: 999; /* Ensure it's below hamburger if hamburger needs to be on top */
+        z-index: 999;
     }
     .nav-menu.active { left: 0; }
 
     .nav-menu .nav-link,
     .navbar.scrolled .nav-menu .nav-link,
     .navbar:not(.scrolled) .nav-menu .nav-link {
-        color: var(--text-dark) !important; /* Ensure visibility on white background */
+        color: var(--text-dark) !important;
         display: block;
         font-size: 1.1rem;
         padding: 0.8rem 0;
@@ -837,15 +897,14 @@ html { scroll-behavior: smooth; }
 
     .hamburger {
         display: flex;
-        z-index: 1001; /* Ensure hamburger is above nav-menu when open */
-        position: relative; /* Needed for z-index to work effectively against fixed elements */
+        z-index: 1001;
+        position: relative;
     }
     .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-
-    .hero { padding-top: calc(var(--navbar-height-scrolled) + 1rem); } /* Adjust for mobile navbar height */
+    .hero { padding-top: calc(var(--navbar-height-scrolled) + 1rem); } /* Use scrolled height for mobile */
     .hero h1 { font-size: 2.2rem; }
     .hero p { font-size: 1rem; }
     .section-title { font-size: 2rem; }
@@ -866,9 +925,8 @@ html { scroll-behavior: smooth; }
     .who-we-are .content-image img {
         margin-top: 2rem;
     }
-    .who-we-are .content-text { order: 1; } /* Ensure text comes before image if desired */
+    .who-we-are .content-text { order: 1; }
     .who-we-are .content-image { order: 2; }
-
 
     .footer-grid {
         grid-template-columns: 1fr;
@@ -876,20 +934,34 @@ html { scroll-behavior: smooth; }
     }
     .footer-section ul { padding-left: 0; }
     .footer-section.footer-about, .footer-section {
-        align-items: center; /* Center content in footer sections */
+        align-items: center;
         display: flex;
         flex-direction: column;
     }
     .social-links { justify-content: center; }
 
+    /* Adjust navbar overlap padding for mobile if necessary */
+    /* Calculate mobile navbar height: (0.75rem * 16px * 2) + content height ~ 60px */
+    :root {
+      --navbar-height-scrolled-mobile: 60px; /* Example, adjust this */
+    }
+    .page-content-after-fixed-header {
+        padding-top: var(--navbar-height-scrolled-mobile);
+    }
+
     /* About page hero responsive adjustments */
     .about-page-hero h1 {
         font-size: clamp(2rem, 6vw, 2.8rem);
     }
-    .page-content-after-fixed-header {
-        /* Adjust for mobile navbar height if it's different or fixed differently */
-        /* Current navbar CSS makes it 0.75rem padding top/bottom for mobile */
-        /* Approximate height: (0.75rem * 16 * 2) + logo/hamburger line height */
-        padding-top: 60px; /* Example, adjust based on actual mobile navbar height */
+
+    /* Contact page responsive adjustments */
+    .contact-details-section h2 {
+        font-size: 1.8rem; /* Adjust title size for mobile */
+    }
+    .contact-details-section h3 {
+        font-size: 1.3rem; /* Adjust sub-title size for mobile */
+    }
+    .contact-details-section p {
+        font-size: 1rem; /* Adjust text size for mobile */
     }
 }
