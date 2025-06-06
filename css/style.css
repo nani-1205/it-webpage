@@ -22,7 +22,7 @@
     --bg-light: #f8f9fa;
     --bg-white: #ffffff;
     --bg-dark: #2c3e50;
-    --bg-dark-textured: #232a34;
+    --bg-dark-textured: #232a34; /* Dark textured background */
 
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
@@ -235,7 +235,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* ==========================================================================
-   Hero Section Module - (modules/hero.html) - UPDATED FOR VIDEO
+   Hero Section Module - (modules/hero.html) - VIDEO BACKGROUND
    ========================================================================== */
 .hero {
     min-height: 100vh;
@@ -250,11 +250,8 @@ html { scroll-behavior: smooth; }
     padding-left: 2rem;
     padding-right: 2rem;
     overflow: hidden;
-    /* background-image related properties removed/commented if video is primary */
-    /* Consider keeping a fallback background color for the .hero itself */
-    background-color: #101020; /* Dark fallback if video/poster fails */
+    background-color: #101020; /* Dark fallback color */
 }
-
 .hero-video-wrapper {
     position: absolute;
     top: 0;
@@ -262,10 +259,9 @@ html { scroll-behavior: smooth; }
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 0; /* Behind overlay and content */
+    z-index: 0;
 }
-
-#heroVideo { /* Styles for the <video> tag */
+#heroVideo {
     min-width: 100%;
     min-height: 100%;
     width: auto;
@@ -274,26 +270,23 @@ html { scroll-behavior: smooth; }
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    object-fit: cover; /* Cover the area, cropping if needed */
+    object-fit: cover;
 }
-
-.hero-overlay { /* Dark tint over the video */
+.hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(20, 30, 40, 0.65); /* Adjust opacity as needed */
-    z-index: 1; /* Above video, below content */
+    background: rgba(20, 30, 40, 0.65);
+    z-index: 1;
 }
-
-.hero-content { /* Text and button content */
+.hero-content {
     max-width: 800px;
     margin: 0 auto;
-    z-index: 2; /* On top of video and overlay */
-    position: relative; /* Establish stacking context */
+    z-index: 2;
+    position: relative;
 }
-
 .hero h1 {
     font-size: clamp(2.8rem, 6vw, 4rem);
     font-weight: 700;
@@ -304,7 +297,6 @@ html { scroll-behavior: smooth; }
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     color: var(--text-light);
 }
-
 .hero p {
     font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     margin-bottom: 2.5rem;
@@ -323,14 +315,9 @@ html { scroll-behavior: smooth; }
     font-size: 1.1rem;
 }
 
-/* Remove background-image animation if video is used */
-/* @keyframes heroBackgroundAnimation { ... } */
-
-
 /* ==========================================================================
    Core Solutions Module - (modules/core-solutions.html)
    ========================================================================== */
-/* ... (Styles remain the same as previous full CSS) ... */
 .comprehensive-services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -379,7 +366,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Who We Are Module - (modules/who-we-are.html)
    ========================================================================== */
-/* ... (Styles remain the same as previous full CSS) ... */
 .who-we-are .content-section {
     display: flex;
     flex-wrap: wrap;
@@ -411,17 +397,101 @@ html { scroll-behavior: smooth; }
 }
 
 /* ==========================================================================
-   Solutions Offered Module & Our Clients Styles (from their respective CSS files, integrated here for completeness if preferred)
-   Or keep them in their separate css/our-clients-styles.css and css/testimonials-styles.css
-   For this example, I'll assume they are separate.
-   If you want all CSS in one file, you'd paste the content of those files here,
-   removing the <link> tags for them in your HTML.
+   Solutions Offered Module - (modules/solutions-offered.html)
+   THIS SECTION SHOULD HAVE A DARK BACKGROUND AND LIGHT TEXT
    ========================================================================== */
+.solutions-offered { /* This is the <section id="solutions-offered" class="section solutions-offered bg-dark-textured"> */
+    /* Background and text color are applied by .bg-dark-textured via global .section rules */
+}
+.solutions-offered .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.solution-card { /* General card style */
+    background: var(--bg-white); /* Default background */
+    color: var(--text-dark);    /* Default text color */
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+/* Specific styles for solution cards inside a .bg-dark-textured section */
+.section.bg-dark-textured .solution-card {
+    background: #2c3643; /* Darker card background for contrast on dark section */
+    color: var(--text-light-secondary); /* Light text for these cards */
+}
+.solution-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+.solution-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+.solution-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.solution-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    /* Default color would be var(--text-dark) */
+}
+.section.bg-dark-textured .solution-card h3 { /* Headings inside cards on dark section */
+    color: var(--text-light);
+}
+.solution-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted); /* Default text for card paragraph */
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+.section.bg-dark-textured .solution-card p { /* Paragraphs inside cards on dark section */
+    color: #adb5bd; /* Lighter muted text */
+}
+.solution-card-button {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--light-accent-color); /* Light button on dark cards */
+    color: var(--text-dark); /* Dark text on light button */
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+    margin-top: auto;
+}
+.section.bg-dark-textured .solution-card .solution-card-button {
+    /* Ensure button stands out on dark cards if default is not suitable */
+    /* The default .solution-card-button style might be fine. Add overrides if needed. */
+    /* Example:
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    */
+}
+.solution-card-button:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+.section.bg-dark-textured .solution-card .solution-card-button:hover {
+    /* Example:
+    background-color: #0056b3;
+    */
+}
+
 
 /* ==========================================================================
    Our Industries Module - (modules/our-industries.html)
    ========================================================================== */
-/* ... (Styles remain the same as previous full CSS) ... */
 .industries .industries-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -465,7 +535,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    CTA Module - (modules/cta.html)
    ========================================================================== */
-/* ... (Styles remain the same as previous full CSS) ... */
 .cta-section {
     padding: 5rem 0;
     background: var(--primary-gradient);
@@ -499,7 +568,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Footer Module - (modules/footer.html)
    ========================================================================== */
-/* ... (Styles remain the same as previous full CSS) ... */
 .footer {
     background: var(--text-dark);
     color: #bdc3c7;
@@ -583,7 +651,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Animations & Scroll Progress
    ========================================================================== */
-/* ... (Styles remain the same as previous full CSS) ... */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
@@ -597,7 +664,6 @@ html { scroll-behavior: smooth; }
     opacity: 1;
     transform: translateY(0);
 }
-/* heroBackgroundAnimation is commented out due to video background */
 .scroll-progress {
     position: fixed;
     top: 0;
@@ -612,7 +678,7 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    About Page, Contact Page, Service Page Template Styles
    ========================================================================== */
-/* ... (These styles remain the same as the previous full CSS I provided) ... */
+/* --- Styles for About Page --- */
 .about-page-hero {
     background: var(--primary-gradient);
     color: var(--text-light);
@@ -628,9 +694,6 @@ html { scroll-behavior: smooth; }
 }
 .about-page-hero .section-description {
     color: var(--text-light-secondary);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 .about-page-content {
     padding-top: 4rem;
@@ -705,6 +768,7 @@ html { scroll-behavior: smooth; }
     color: var(--secondary-color);
 }
 
+/* --- Styles for Contact Page --- */
 .contact-content-area {
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -765,6 +829,7 @@ html { scroll-behavior: smooth; }
     border: 1px solid #ddd;
 }
 
+/* --- Styles for Generic Service Pages --- */
 .service-page-hero {
     background: var(--primary-gradient);
     color: var(--text-light);
@@ -780,9 +845,6 @@ html { scroll-behavior: smooth; }
 }
 .service-page-hero .section-description {
     color: var(--text-light-secondary);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 .service-page-content {
     padding-top: 4rem;
@@ -869,12 +931,11 @@ html { scroll-behavior: smooth; }
     margin-bottom: 1.5rem;
 }
 
-
 /* ==========================================================================
    Responsive Design
    ========================================================================== */
 @media (max-width: 992px) {
-    /* No specific rules needed here currently */
+    /* No general overrides needed here with current layout */
 }
 
 @media (max-width: 768px) {
