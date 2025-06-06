@@ -35,7 +35,7 @@
     /* --- Navbar Height Variables --- */
     --navbar-height-initial: 81.6px;
     --navbar-height-scrolled: 65.6px;
-    --navbar-height-scrolled-mobile: 65.6px; /* Adjust if mobile scrolled height is different */
+    --navbar-height-scrolled-mobile: 65.6px;
 }
 
 body {
@@ -59,7 +59,7 @@ html { scroll-behavior: smooth; }
     padding: 0 2rem;
 }
 
-.section { /* General styling for all <section> elements used as modules */
+.section {
     padding: 5rem 0;
     overflow: hidden;
 }
@@ -67,7 +67,7 @@ html { scroll-behavior: smooth; }
 .section.bg-dark { background-color: var(--bg-dark); color: var(--text-light); }
 .section.bg-dark-textured { background-color: var(--bg-dark-textured); color: var(--text-light); }
 
-.section-title { /* Used in most sections */
+.section-title {
     text-align: center;
     font-size: clamp(2.2rem, 5vw, 3rem);
     font-weight: 700;
@@ -94,7 +94,7 @@ html { scroll-behavior: smooth; }
 .section.bg-dark-textured .section-title::after {
     background-color: var(--text-light);
 }
-.section-subtitle { /* Used in some sections like Testimonials, Core Solutions */
+.section-subtitle {
     text-align: center;
     font-size: 1rem;
     font-weight: 600;
@@ -103,7 +103,7 @@ html { scroll-behavior: smooth; }
     letter-spacing: 1px;
     margin-bottom: 0.5rem;
 }
-.section-description { /* Used in several sections */
+.section-description {
     font-size: 1.1rem;
     color: var(--text-muted);
     text-align: center;
@@ -117,7 +117,7 @@ html { scroll-behavior: smooth; }
     color: var(--text-light-secondary);
 }
 
-.cta-button { /* General Call to Action button style */
+.cta-button {
     display: inline-block;
     padding: 0.9rem 2.2rem;
     background: var(--primary-color);
@@ -136,9 +136,8 @@ html { scroll-behavior: smooth; }
     background-color: #0056b3;
 }
 
-/* --- General Page Adjustments for Fixed Header (used on sub-pages) --- */
 .page-content-after-fixed-header {
-    padding-top: var(--navbar-height-initial); /* Use initial height for subpages if navbar starts transparent */
+    padding-top: var(--navbar-height-initial);
 }
 
 /* ==========================================================================
@@ -236,14 +235,10 @@ html { scroll-behavior: smooth; }
 }
 
 /* ==========================================================================
-   Hero Section Module - (modules/hero.html)
+   Hero Section Module - (modules/hero.html) - UPDATED FOR VIDEO
    ========================================================================== */
 .hero {
     min-height: 100vh;
-    background-image: url('../img/banner4.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 110% auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -255,24 +250,50 @@ html { scroll-behavior: smooth; }
     padding-left: 2rem;
     padding-right: 2rem;
     overflow: hidden;
-    animation: heroBackgroundAnimation 40s linear infinite alternate;
+    /* background-image related properties removed/commented if video is primary */
+    /* Consider keeping a fallback background color for the .hero itself */
+    background-color: #101020; /* Dark fallback if video/poster fails */
 }
-.hero::before {
-    content: '';
+
+.hero-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; /* Behind overlay and content */
+}
+
+#heroVideo { /* Styles for the <video> tag */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Cover the area, cropping if needed */
+}
+
+.hero-overlay { /* Dark tint over the video */
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(20, 30, 40, 0.65);
-    z-index: 1;
+    background: rgba(20, 30, 40, 0.65); /* Adjust opacity as needed */
+    z-index: 1; /* Above video, below content */
 }
-.hero-content {
+
+.hero-content { /* Text and button content */
     max-width: 800px;
     margin: 0 auto;
-    z-index: 2;
-    position: relative;
+    z-index: 2; /* On top of video and overlay */
+    position: relative; /* Establish stacking context */
 }
+
 .hero h1 {
     font-size: clamp(2.8rem, 6vw, 4rem);
     font-weight: 700;
@@ -283,6 +304,7 @@ html { scroll-behavior: smooth; }
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     color: var(--text-light);
 }
+
 .hero p {
     font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     margin-bottom: 2.5rem;
@@ -294,16 +316,21 @@ html { scroll-behavior: smooth; }
     line-height: 1.8;
     color: var(--text-light-secondary);
 }
-.hero-cta { /* Extends .cta-button */
+.hero-cta {
     opacity: 0;
     animation: fadeInUp 1s ease 0.9s forwards;
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
 }
 
+/* Remove background-image animation if video is used */
+/* @keyframes heroBackgroundAnimation { ... } */
+
+
 /* ==========================================================================
-   Core Solutions Module (Comprehensive IT Services) - (modules/core-solutions.html)
+   Core Solutions Module - (modules/core-solutions.html)
    ========================================================================== */
+/* ... (Styles remain the same as previous full CSS) ... */
 .comprehensive-services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -352,7 +379,8 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Who We Are Module - (modules/who-we-are.html)
    ========================================================================== */
-.who-we-are .content-section { /* .who-we-are is the section class from the module */
+/* ... (Styles remain the same as previous full CSS) ... */
+.who-we-are .content-section {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -383,82 +411,18 @@ html { scroll-behavior: smooth; }
 }
 
 /* ==========================================================================
-   Solutions Offered Module - (modules/solutions-offered.html)
+   Solutions Offered Module & Our Clients Styles (from their respective CSS files, integrated here for completeness if preferred)
+   Or keep them in their separate css/our-clients-styles.css and css/testimonials-styles.css
+   For this example, I'll assume they are separate.
+   If you want all CSS in one file, you'd paste the content of those files here,
+   removing the <link> tags for them in your HTML.
    ========================================================================== */
-.solutions-offered .solutions-grid { /* .solutions-offered is the section class */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-.solution-card {
-    background: var(--bg-white);
-    color: var(--text-dark);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-.section.bg-dark-textured .solution-card { /* Contextual styling */
-    background: #2c3643;
-    color: var(--text-light-secondary);
-}
-.solution-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
-}
-.solution-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-}
-.solution-card-content {
-    padding: 1.5rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-.solution-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-}
-.section.bg-dark-textured .solution-card h3 {
-    color: var(--text-light);
-}
-.solution-card p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
-}
-.section.bg-dark-textured .solution-card p {
-    color: #adb5bd;
-}
-.solution-card-button {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    background-color: var(--light-accent-color);
-    color: var(--text-dark);
-    text-decoration: none;
-    border-radius: var(--border-radius-sm);
-    font-weight: 500;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    text-align: center;
-    margin-top: auto;
-}
-.solution-card-button:hover {
-    background-color: var(--primary-color);
-    color: var(--text-light);
-}
 
 /* ==========================================================================
    Our Industries Module - (modules/our-industries.html)
    ========================================================================== */
-.industries .industries-grid { /* .industries is the section class */
+/* ... (Styles remain the same as previous full CSS) ... */
+.industries .industries-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.5rem;
@@ -499,9 +463,10 @@ html { scroll-behavior: smooth; }
 }
 
 /* ==========================================================================
-   CTA (Call to Action) Module - (modules/cta.html)
+   CTA Module - (modules/cta.html)
    ========================================================================== */
-.cta-section { /* This is the <section class="cta-section section"> */
+/* ... (Styles remain the same as previous full CSS) ... */
+.cta-section {
     padding: 5rem 0;
     background: var(--primary-gradient);
     color: var(--text-light);
@@ -511,7 +476,6 @@ html { scroll-behavior: smooth; }
     font-size: clamp(2.2rem, 5vw, 2.8rem);
     margin-bottom: 1.5rem;
     font-weight: 700;
-    /* Color is inherited from .cta-section */
 }
 .cta-section p {
     font-size: 1.15rem;
@@ -521,21 +485,21 @@ html { scroll-behavior: smooth; }
     margin-right: auto;
     opacity: 0.9;
 }
-.cta-section .cta-button { /* Specific CTA button styling if needed, or uses general .cta-button */
+.cta-section .cta-button {
     background: var(--text-light);
     color: var(--primary-color);
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
 }
 .cta-section .cta-button:hover {
-    background: #e9ecef; /* Slightly different hover for this button */
+    background: #e9ecef;
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    /* transform and color inherited or overridden if needed */
 }
 
 /* ==========================================================================
    Footer Module - (modules/footer.html)
    ========================================================================== */
+/* ... (Styles remain the same as previous full CSS) ... */
 .footer {
     background: var(--text-dark);
     color: #bdc3c7;
@@ -619,6 +583,7 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Animations & Scroll Progress
    ========================================================================== */
+/* ... (Styles remain the same as previous full CSS) ... */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
@@ -632,13 +597,7 @@ html { scroll-behavior: smooth; }
     opacity: 1;
     transform: translateY(0);
 }
-@keyframes heroBackgroundAnimation {
-    0% { background-size: 110% auto; background-position: 50% 50%; }
-    25% { background-position: 55% 45%; }
-    50% { background-size: 115% auto; background-position: 45% 55%; }
-    75% { background-position: 50% 40%; }
-    100% { background-size: 110% auto; background-position: 50% 50%; }
-}
+/* heroBackgroundAnimation is commented out due to video background */
 .scroll-progress {
     position: fixed;
     top: 0;
@@ -651,9 +610,10 @@ html { scroll-behavior: smooth; }
 }
 
 /* ==========================================================================
-   About Page Specific Styles - (about-us.html, modules/about-us-content.html)
+   About Page, Contact Page, Service Page Template Styles
    ========================================================================== */
-.about-page-hero { /* Used in about-us.html */
+/* ... (These styles remain the same as the previous full CSS I provided) ... */
+.about-page-hero {
     background: var(--primary-gradient);
     color: var(--text-light);
     padding-bottom: 4rem;
@@ -672,14 +632,14 @@ html { scroll-behavior: smooth; }
     margin-left: auto;
     margin-right: auto;
 }
-.about-page-content { /* Wrapper for content in about-us-content.html, used in about-us.html */
+.about-page-content {
     padding-top: 4rem;
     padding-bottom: 4rem;
 }
 .about-page-content .container {
     max-width: 900px;
 }
-.about-section { /* Individual content sections within about-us-content.html */
+.about-section {
     margin-bottom: 3rem;
 }
 .about-section h2 {
@@ -745,19 +705,16 @@ html { scroll-behavior: smooth; }
     color: var(--secondary-color);
 }
 
-/* ==========================================================================
-   Contact Page Specific Styles - (contact.html)
-   ========================================================================== */
-.contact-content-area { /* Main wrapper for contact page content */
+.contact-content-area {
     padding-top: 4rem;
     padding-bottom: 4rem;
 }
 .contact-content-area .container {
-    max-width: 700px; /* Centered single column */
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
-.contact-details-section h2 { /* "Our Contact Details" title */
+.contact-details-section h2 {
     font-size: 2.2rem;
     color: var(--primary-color);
     margin-bottom: 2rem;
@@ -766,7 +723,7 @@ html { scroll-behavior: smooth; }
     text-align: center;
     font-weight: 600;
 }
-.contact-details-section h3 { /* "Office Hours" title */
+.contact-details-section h3 {
     font-size: 1.5rem;
     color: var(--text-dark);
     margin-top: 2.5rem;
@@ -808,11 +765,8 @@ html { scroll-behavior: smooth; }
     border: 1px solid #ddd;
 }
 
-/* ==========================================================================
-   Service Page Template Styles - (e.g., cloud-services.html, etc.)
-   ========================================================================== */
-.service-page-hero { /* Hero for individual service pages */
-    background: var(--primary-gradient); /* Default, can be overridden */
+.service-page-hero {
+    background: var(--primary-gradient);
     color: var(--text-light);
     padding-bottom: 4rem;
     padding-left: 2rem;
@@ -830,17 +784,17 @@ html { scroll-behavior: smooth; }
     margin-left: auto;
     margin-right: auto;
 }
-.service-page-content { /* Main content wrapper for service pages */
+.service-page-content {
     padding-top: 4rem;
     padding-bottom: 4rem;
 }
 .service-page-content .container {
     max-width: 900px;
 }
-.service-section { /* Sections within a service page */
+.service-section {
     margin-bottom: 3rem;
 }
-.service-section h2 { /* Sub-section titles like "Our Cloud Service Offerings" */
+.service-section h2 {
     font-size: 1.8rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
@@ -848,7 +802,7 @@ html { scroll-behavior: smooth; }
     border-bottom: 2px solid var(--light-accent-color);
     font-weight: 600;
 }
-.service-section h3 { /* Smaller headings within a service section */
+.service-section h3 {
     font-size: 1.3rem;
     color: var(--text-dark);
     margin-top: 1.5rem;
@@ -870,7 +824,7 @@ html { scroll-behavior: smooth; }
 .service-section ul li {
     margin-bottom: 0.5rem;
 }
-.service-key-features { /* Box for highlighting key features/offerings */
+.service-key-features {
     background-color: var(--bg-light);
     padding: 2.5rem;
     border-radius: var(--border-radius-md);
@@ -888,16 +842,16 @@ html { scroll-behavior: smooth; }
     font-size: 1.05rem;
 }
 .service-key-features ul li::before {
-    content: '\f00c'; /* FontAwesome check icon */
+    content: '\f00c';
     font-family: 'Font Awesome 6 Free';
-    font-weight: 900; /* Required for solid icons in FA6 Free */
+    font-weight: 900;
     color: var(--primary-color);
     position: absolute;
     left: 0;
-    top: 2px; /* Adjust for vertical alignment */
+    top: 2px;
     font-size: 1.1rem;
 }
-.service-cta-section { /* CTA block at the end of service pages */
+.service-cta-section {
     text-align: center;
     margin-top: 3rem;
     padding: 2.5rem;
@@ -915,12 +869,12 @@ html { scroll-behavior: smooth; }
     margin-bottom: 1.5rem;
 }
 
+
 /* ==========================================================================
    Responsive Design
    ========================================================================== */
 @media (max-width: 992px) {
-    /* .nav-cta-button was removed, this rule is not strictly needed but harmless */
-    /* .nav-cta-button { display: none; } */
+    /* No specific rules needed here currently */
 }
 
 @media (max-width: 768px) {
@@ -1002,11 +956,9 @@ html { scroll-behavior: smooth; }
     .social-links { justify-content: center; }
 
     .page-content-after-fixed-header {
-        /* If mobile navbar always appears solid or quickly becomes solid, use its scrolled height */
         padding-top: var(--navbar-height-scrolled-mobile);
     }
 
-    /* Page Specific Responsive Adjustments */
     .about-page-hero h1, .service-page-hero h1 {
         font-size: clamp(2rem, 6vw, 2.8rem);
     }
@@ -1019,7 +971,7 @@ html { scroll-behavior: smooth; }
     .about-section h2, .service-section h2, .contact-details-section h2 {
         font-size: 1.8rem;
     }
-    .about-section h3, .service-section h3, .contact-details-section h3 { /* For .contact-details-section h3 */
+    .about-section h3, .service-section h3, .contact-details-section h3 {
         font-size: 1.3rem;
     }
     .about-section p, .about-section ul,
