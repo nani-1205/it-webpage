@@ -190,7 +190,7 @@ html { scroll-behavior: smooth; }
 }
 
 .logo-text-naast-shield {
-    font-size: 1.8rem; /* Increased to balance larger image */
+    font-size: 5.0rem; /* Increased to balance larger image */
     font-weight: 700;
     letter-spacing: -0.5px;
     line-height: 1.1;
