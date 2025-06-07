@@ -956,7 +956,7 @@ html { scroll-behavior: smooth; }
     }
 
     .navbar-logo-image {
-        height: 52px; /* Adjusted mobile logo height */
+        height: 60px; /* Adjusted mobile logo height */
         margin-right: 10px;
     }
     .logo-text-naast-shield {
