@@ -34,7 +34,7 @@
 
     --navbar-height-initial: 81.6px;
     --navbar-height-scrolled: 65.6px;
-    --navbar-height-scrolled-mobile: 65.6px;
+    --navbar-height-scrolled-mobile: 65.6px; /* Adjust if mobile scrolled height is different */
 }
 
 body {
@@ -168,32 +168,29 @@ html { scroll-behavior: smooth; }
     align-items: center;
 }
 
-.logo-link { /* Styles for the <a> tag containing the logo image and text */
+.logo-link {
     display: flex;
-    align-items: center; /* Vertically aligns image and text */
+    align-items: center;
     text-decoration: none;
-    color: var(--text-light); /* Default text color (for logo-text) */
+    color: var(--text-light);
     transition: color 0.3s ease;
 }
 .navbar.scrolled .logo-link {
-    color: var(--primary-color); /* Text color when navbar is scrolled */
+    color: var(--primary-color);
 }
 
-.navbar-logo-image { /* Styles for the <img> logo */
-    height: 45px; /* ADJUST THIS to your desired logo height */
-    width: auto;   /* Maintain aspect ratio */
-    margin-right: 10px; /* Space between image and text */
-    /* If the image is an SVG that inherits color, you might need to handle its fill:
-    fill: currentColor; (if you want it to change color with .logo-link)
-    */
+.navbar-logo-image {
+    height: 55px; /* INCREASED - Adjust this to your preference */
+    width: auto;
+    margin-right: 12px; /* Increased spacing */
 }
 
-.logo-text-naast-shield { /* Styles for the text part of the logo */
-    font-size: 1.3rem; /* Adjust to match desired size, slightly smaller than old text logo */
+.logo-text-naast-shield {
+    font-size: 1.5rem; /* INCREASED - Adjust to balance with image */
     font-weight: 700;
     letter-spacing: -0.5px;
-    line-height: 1; /* Helps with vertical alignment if text wraps */
-    /* To visually hide text but keep for screen readers (if logo image includes company name): */
+    line-height: 1.2; /* Added for consistency */
+    /* To visually hide text (if logo image includes the name clearly): */
     /*
     position: absolute;
     width: 1px;
@@ -265,7 +262,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Hero Section Module - (modules/hero.html) - VIDEO BACKGROUND
    ========================================================================== */
-/* ... (Styles from previous full CSS - no changes needed here related to logo) ... */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -347,7 +343,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Core Solutions Module - (modules/core-solutions.html)
    ========================================================================== */
-/* ... (Styles from previous full CSS - no changes needed here related to logo) ... */
 .comprehensive-services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -396,7 +391,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Who We Are Module - (modules/who-we-are.html)
    ========================================================================== */
-/* ... (Styles from previous full CSS - no changes needed here related to logo) ... */
 .who-we-are .content-section {
     display: flex;
     flex-wrap: wrap;
@@ -430,7 +424,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Solutions Offered Module - (modules/solutions-offered.html)
    ========================================================================== */
-/* ... (Styles from previous full CSS - no changes needed here related to logo) ... */
 .solutions-offered .solutions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -504,7 +497,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Our Industries Module - (modules/our-industries.html)
    ========================================================================== */
-/* ... (Styles from previous full CSS - no changes needed here related to logo) ... */
 .industries .industries-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -548,7 +540,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    CTA Module - (modules/cta.html)
    ========================================================================== */
-/* ... (Styles from previous full CSS - no changes needed here related to logo) ... */
 .cta-section {
     padding: 5rem 0;
     background: var(--primary-gradient);
@@ -582,7 +573,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Footer Module - (modules/footer.html)
    ========================================================================== */
-/* ... (Styles from previous full CSS - no changes needed here related to logo) ... */
 .footer {
     background: var(--text-dark);
     color: #bdc3c7;
@@ -667,7 +657,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    Animations & Scroll Progress
    ========================================================================== */
-/* ... (Styles from previous full CSS - no changes needed here related to logo) ... */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
@@ -695,7 +684,6 @@ html { scroll-behavior: smooth; }
 /* ==========================================================================
    About Page, Contact Page, Service Page Template Styles
    ========================================================================== */
-/* ... (Styles from previous full CSS - no changes needed here related to logo) ... */
 .about-page-hero {
     background: var(--primary-gradient);
     color: var(--text-light);
@@ -959,15 +947,15 @@ html { scroll-behavior: smooth; }
     .navbar.scrolled { padding: 0.75rem 0; }
 
     .logo-link {
-        /* Adjust logo display for mobile if needed */
+        /* No specific change, alignment should still work */
     }
     .navbar-logo-image {
-        height: 35px; /* Slightly smaller logo on mobile */
+        height: 40px; /* Adjusted height for mobile */
         margin-right: 8px;
     }
     .logo-text-naast-shield {
-        font-size: 1rem; /* Smaller text on mobile */
-        /* If you have long text that might wrap, you might hide it on mobile: */
+        font-size: 1.1rem; /* Adjusted font size for mobile */
+        /* If text becomes too long or wraps undesirably, consider hiding it: */
         /* display: none; */
     }
 
