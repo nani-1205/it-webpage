@@ -183,7 +183,7 @@ html { scroll-behavior: smooth; }
 }
 
 .navbar-logo-image {
-    height: 150px; /* ~30% larger than an assumed 55px */
+    height: 32px; /* ~30% larger than an assumed 55px */
     width: auto;
     margin-right: 16px;
     display: block;
