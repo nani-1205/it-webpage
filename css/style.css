@@ -180,9 +180,9 @@ html { scroll-behavior: smooth; }
 }
 
 .navbar-logo-image {
-    height: 100px; /* INCREASED - Adjust this to your preference */
+    height: 55px; /* INCREASED - Adjust this to your preference */
     width: auto;
-    margin-right: 15px; /* Increased spacing */
+    margin-right: 12px; /* Increased spacing */
 }
 
 .logo-text-naast-shield {
